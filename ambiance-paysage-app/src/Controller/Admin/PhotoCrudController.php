@@ -3,10 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Photo;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class PhotoCrudController extends AbstractCrudController
 {
@@ -15,14 +16,24 @@ class PhotoCrudController extends AbstractCrudController
         return Photo::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield ImageField::new('image', 'Before Image')
+            ->setBasePath('/uploads/photos')
+            ->onlyOnIndex();
+
+        yield Field::new('imageFile', 'Before Image')
+            ->setFormType(VichImageType::class)
+            ->onlyOnForms();
+
+        yield ChoiceField::new('category')
+            ->setChoices([
+                'Work in progress' => 'work_in_progress',
+                'Finished' => 'finished',
+            ]);
+
     }
-    */
+
+
 }

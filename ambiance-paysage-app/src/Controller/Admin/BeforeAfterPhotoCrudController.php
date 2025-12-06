@@ -7,14 +7,10 @@ use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
-use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class BeforeAfterPhotoCrudController extends AbstractCrudController
@@ -45,7 +41,8 @@ class BeforeAfterPhotoCrudController extends AbstractCrudController
             ->onlyOnForms();
 
         yield BooleanField::new('featuredOnHomepage')
-            ->renderAsSwitch(false);
+            ->renderAsSwitch(true)
+            ->addCssClass('featured-on-homepage-switch');
     }
 
     public function persistEntity(EntityManagerInterface $em, $entityInstance): void
@@ -75,6 +72,12 @@ class BeforeAfterPhotoCrudController extends AbstractCrudController
                 $other->setFeaturedOnHomepage(false);
             }
         }
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        $assets->addJsFile('controllers/before_after_listing.js', Crud::PAGE_INDEX);
+        return $assets;
     }
 
 }

@@ -1,6 +1,16 @@
 <header>
-    <h1>Mon site</h1>
-    <nav>
-        ...
-    </nav>
+    <div class="max-width-container">
+        <div class="logo-container">
+            <a href="{{ path('app_homepage') }}">
+                <img src="{{ asset('images/logos/logo-header.png') }}" alt="Logo Ambiance Paysage" class="header-logo">
+            </a>
+        </div>
+        <nav>
+         <ul>
+             <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
+             <li><a href="{{ path('app_gallery') }}">Galerie</a></li>
+             <li><a href="{{ path('app_contact') }}">Contact</a></li>
+         </ul>
+        </nav>
+    </div>
 </header>

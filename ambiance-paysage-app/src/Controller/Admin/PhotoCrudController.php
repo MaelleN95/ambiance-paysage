@@ -19,11 +19,11 @@ class PhotoCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        yield ImageField::new('image', 'Before Image')
+        yield ImageField::new('image', 'Image')
             ->setBasePath('/uploads/photos')
             ->onlyOnIndex();
 
-        yield Field::new('imageFile', 'Before Image')
+        yield Field::new('imageFile', 'Image')
             ->setFormType(VichImageType::class)
             ->onlyOnForms();
 

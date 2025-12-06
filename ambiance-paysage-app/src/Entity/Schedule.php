@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\ScheduleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ScheduleRepository::class)]
+#[UniqueEntity(fields: ['dayName'], message: 'Ce jour existe déjà.')]
 class Schedule
 {
     #[ORM\Id]

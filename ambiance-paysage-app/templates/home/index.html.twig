@@ -1,20 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/services.css') }}">
+
+    <style>
+        #services-section .service.prioritized {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #services-section .service.prioritized:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        #services-section .service img {
+            width: 50%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        #services-section .service-info {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    </style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/html/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/var/www/html/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+{% include 'home/services-section.html.twig' %}
 {% endblock %}

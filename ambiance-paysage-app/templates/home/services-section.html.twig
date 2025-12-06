@@ -1,0 +1,14 @@
+<section id="services-section">
+    <div class="max-width-container">
+        <h2>Mes services</h2>
+        {% for service in prioritizedServices %}
+            <div class="service prioritized">
+                <img src="/uploads/services/{{ service.image }}" alt="{{ service.name }} image">
+                <div class="service-info">
+                    <h3>{{ service.name }}</h3>
+                    {{ service.icon|raw }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

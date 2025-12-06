@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ServiceRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -25,10 +26,10 @@ class Service
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
-    #[Vich\UploadableField(mapping: "services", fileNameProperty: "image")]
+    #[Vich\UploadableField(mapping: "service", fileNameProperty: "image")]
     private ?File $imageFile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $icon = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
@@ -75,15 +76,20 @@ class Service
         return $this;
     }
 
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+    
     public function getIcon(): ?string
     {
         return $this->icon;
     }
-
+    
     public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
-
+        
         return $this;
     }
 
@@ -94,10 +100,5 @@ class Service
         if (null !== $imageFile) {
             $this->updatedAt = new \DateTimeImmutable();
         }
-    }
-
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
     }
 }

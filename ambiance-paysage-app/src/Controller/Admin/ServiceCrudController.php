@@ -3,9 +3,11 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Service;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ServiceCrudController extends AbstractCrudController
@@ -15,14 +17,24 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+            yield TextField::new('name');
+
+            # @TODO : SUPER ADMIN ONLY
+            yield BooleanField::new('prioritized')
+                ->onlyOnForms();
+
+            # @TODO : SUPER ADMIN ONLY
+            yield Field::new('imageFile', 'Image')
+                ->setFormType(VichImageType::class)
+                ->onlyOnForms();
+
+            # @TODO : SUPER ADMIN ONLY
+            yield TextareaField::new('icon')
+                ->setRequired(false)
+                ->onlyOnForms();
+
+
     }
-    */
 }

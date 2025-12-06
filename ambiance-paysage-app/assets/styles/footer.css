@@ -1,0 +1,54 @@
+footer {
+    background-color: #2e8b57;
+    color: white;
+    padding: 20px;
+}
+
+footer > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer .footer-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+footer .address-hours {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .social-media lord-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+footer .page-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+footer .page-links a:hover {
+    text-decoration: underline;
+}
+
+footer .address-hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .address-hours ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+footer .address-hours ul li .day-name {
+    font-weight: bold;
+    min-width: 100px;
+}

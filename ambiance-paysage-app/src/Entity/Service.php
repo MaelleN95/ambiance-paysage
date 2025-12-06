@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
@@ -18,6 +19,7 @@ class Service
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
@@ -27,9 +29,18 @@ class Service
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: "service", fileNameProperty: "image")]
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+        mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(
+        max: 1000,
+        maxMessage: "L'icône ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $icon = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
@@ -80,16 +91,16 @@ class Service
     {
         return $this->imageFile;
     }
-    
+
     public function getIcon(): ?string
     {
         return $this->icon;
     }
-    
+
     public function setIcon(?string $icon): static
     {
         $this->icon = $icon;
-        
+
         return $this;
     }
 

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\BeforeAfterPhotoRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[Vich\Uploadable]
@@ -21,12 +22,24 @@ class BeforeAfterPhoto
     private ?string $beforeImage = null;
 
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "beforeImage")]
+    #[Assert\NotNull(message: "Veuillez uploader une image avant.")]
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+        mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
+    )]
     private ?File $beforeImageFile = null;
 
     #[ORM\Column(length: 255)]
     private ?string $afterImage = null;
-    
+
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "afterImage")]
+    #[Assert\NotNull(message: "Veuillez uploader une image après.")]
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+        mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
+    )]
     private ?File $afterImageFile = null;
 
     #[ORM\Column(nullable: true)]

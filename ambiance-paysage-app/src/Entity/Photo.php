@@ -6,6 +6,7 @@ use App\Repository\PhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: PhotoRepository::class)]
@@ -20,9 +21,20 @@ class Photo
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: "photo", fileNameProperty: "image")]
+    #[Assert\NotNull(message: "Veuillez uploader une image.")]
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+        mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
+    )]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "La catégorie est obligatoire.")]
+    #[Assert\Choice(
+        choices: ['work_in_progress', 'finished'],
+        message: "Choisissez une catégorie valide."
+    )]
     private ?string $category = null;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]

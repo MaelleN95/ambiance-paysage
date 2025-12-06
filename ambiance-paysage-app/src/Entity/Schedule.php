@@ -6,6 +6,7 @@ use App\Repository\ScheduleRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ScheduleRepository::class)]
 #[UniqueEntity(fields: ['dayName'], message: 'Ce jour existe déjà.')]
@@ -17,9 +18,18 @@ class Schedule
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Choice(
+        choices: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        message: "Veuillez choisir un jour valide."
+    )]
     private ?string $dayName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le mode est obligatoire.")]
+    #[Assert\Choice(
+        choices: ['open', 'closed', 'break'],
+        message: "Veuillez choisir un mode valide."
+    )]
     private ?string $mode = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]

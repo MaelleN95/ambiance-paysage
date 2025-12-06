@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\SocialNetworkRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SocialNetworkRepository::class)]
 class SocialNetwork
@@ -14,12 +16,19 @@ class SocialNetwork
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(
+        max: 1000,
+        maxMessage: "L'icône ne peut pas dépasser {{ limit }} caractères."
+    )]
     private ?string $icon = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le lien est obligatoire.")]
+    #[Assert\Url(message: "Veuillez saisir une URL valide.")]
     private ?string $link = null;
 
     public function getId(): ?int

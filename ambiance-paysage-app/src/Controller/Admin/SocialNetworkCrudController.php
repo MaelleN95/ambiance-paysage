@@ -4,9 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\SocialNetwork;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 
 class SocialNetworkCrudController extends AbstractCrudController
 {
@@ -15,14 +15,14 @@ class SocialNetworkCrudController extends AbstractCrudController
         return SocialNetwork::class;
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield TextField::new('name', 'Name');
+
+        yield TextareaField::new('icon', 'Icon')
+            ->setRequired(false)
+            ->setHelp('Paste your lord-icon HTML code here.');
+
+        yield UrlField::new('link', 'Link');
     }
-    */
 }

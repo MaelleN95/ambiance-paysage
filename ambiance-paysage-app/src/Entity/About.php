@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\AboutRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity(fields: ['description'], message: 'Une description  déjà.')]
 #[ORM\Entity(repositoryClass: AboutRepository::class)]
 class About
 {

@@ -7,7 +7,9 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as AppAssert;
 
+#[AppAssert\ValidSchedule]
 #[ORM\Entity(repositoryClass: ScheduleRepository::class)]
 #[UniqueEntity(fields: ['dayName'], message: 'Ce jour existe déjà.')]
 class Schedule
@@ -38,11 +40,11 @@ class Schedule
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTime $morningEnd = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $afternoonStart = null;
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTime $afternoonStart = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $afternoonEnd = null;
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTime $afternoonEnd = null;
 
     public function getId(): ?int
     {
@@ -97,24 +99,24 @@ class Schedule
         return $this;
     }
 
-    public function getAfternoonStart(): ?string
+    public function getAfternoonStart(): ?\DateTime
     {
         return $this->afternoonStart;
     }
 
-    public function setAfternoonStart(?string $afternoonStart): static
+    public function setAfternoonStart(?\DateTime $afternoonStart): static
     {
         $this->afternoonStart = $afternoonStart;
 
         return $this;
     }
 
-    public function getAfternoonEnd(): ?string
+    public function getAfternoonEnd(): ?\DateTime
     {
         return $this->afternoonEnd;
     }
 
-    public function setAfternoonEnd(?string $afternoonEnd): static
+    public function setAfternoonEnd(?\DateTime $afternoonEnd): static
     {
         $this->afternoonEnd = $afternoonEnd;
 

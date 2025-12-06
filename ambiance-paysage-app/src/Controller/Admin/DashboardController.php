@@ -31,18 +31,18 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Html');
+            ->setTitle('Ambiance Paysage Admin');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard('dashboard.title', 'fa fa-home');
 
-        yield MenuItem::linkToCrud('Before/After Photos', 'fa fa-images', BeforeAfterPhoto::class);
-        yield MenuItem::linkToCrud('Photos', 'fa fa-image', Photo::class);
-        yield MenuItem::linkToCrud('Services', 'fa fa-tools', Service::class);
-        yield MenuItem::linkToCrud('Schedules', 'fa fa-clock', Schedule::class);
-        yield MenuItem::linkToCrud('Social Networks', 'fa fa-share-alt', SocialNetwork::class);
-        yield MenuItem::linkToCrud('About', 'fa fa-info-circle', About::class);
+        yield MenuItem::linkToCrud('before_after.plural', 'fa fa-images', BeforeAfterPhoto::class);
+        yield MenuItem::linkToCrud('photo.plural', 'fa fa-image', Photo::class);
+        yield MenuItem::linkToCrud('service.plural', 'fa fa-tools', Service::class);
+        yield MenuItem::linkToCrud('schedule.plural', 'fa fa-clock', Schedule::class);
+        yield MenuItem::linkToCrud('social_network.plural', 'fa fa-share-alt', SocialNetwork::class);
+        yield MenuItem::linkToCrud('about.singular', 'fa fa-info-circle', About::class);
     }
 }

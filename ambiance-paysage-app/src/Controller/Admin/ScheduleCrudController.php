@@ -16,34 +16,41 @@ class ScheduleCrudController extends AbstractCrudController
         return Schedule::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('schedule.singular')
+            ->setEntityLabelInPlural('schedule.plural');
+    }
+
     public function configureFields(string $pageName): iterable
     {
-            yield ChoiceField::new('dayName', 'Day Name')
-                ->setChoices([
-                    'Monday'    => 'Monday',
-                    'Tuesday'   => 'Tuesday',
-                    'Wednesday' => 'Wednesday',
-                    'Thursday'  => 'Thursday',
-                    'Friday'    => 'Friday',
-                    'Saturday'  => 'Saturday',
-                    'Sunday'    => 'Sunday',
-                ]);
+        yield ChoiceField::new('dayName', 'schedule.day_name.label')
+            ->setChoices([
+                'schedule.day_name.monday'    => 'Monday',
+                'schedule.day_name.tuesday'   => 'Tuesday',
+                'schedule.day_name.wednesday' => 'Wednesday',
+                'schedule.day_name.thursday'  => 'Thursday',
+                'schedule.day_name.friday'    => 'Friday',
+                'schedule.day_name.saturday'  => 'Saturday',
+                'schedule.day_name.sunday'    => 'Sunday',
+            ]);
 
-            yield ChoiceField::new('mode')
-                ->setChoices([
-                    'Open' => 'open',
-                    'Closed' => 'closed',
-                    'Break' => 'break',
-                ]);
+        yield ChoiceField::new('mode', 'schedule.mode.label')
+            ->setChoices([
+                'schedule.mode.closed'       => 'closed',
+                'schedule.mode.open_all_day' => 'open',
+                'schedule.mode.break'        => 'break',
+            ]);
 
-            yield TimeField::new('morningStart', 'Day Start')
-                ->setRequired(false);
-            yield TimeField::new('morningEnd', 'Morning End')
-                ->setRequired(false);
-            yield TimeField::new('afternoonStart', 'Afternoon Start')
-                ->setRequired(false);
-            yield TimeField::new('afternoonEnd', 'Day End')
-                ->setRequired(false);
+        yield TimeField::new('morningStart', 'schedule.morning_start.label')
+            ->setRequired(false);
+        yield TimeField::new('morningEnd', 'schedule.morning_end.label')
+            ->setRequired(false);
+        yield TimeField::new('afternoonStart', 'schedule.afternoon_start.label')
+            ->setRequired(false);
+        yield TimeField::new('afternoonEnd', 'schedule.afternoon_end.label')
+            ->setRequired(false);
     }
 
 

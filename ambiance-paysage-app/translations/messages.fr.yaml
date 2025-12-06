@@ -1,0 +1,81 @@
+dashboard:
+  title: "Tableau de bord"
+
+about:
+  singular: "À propos"
+  plural: "À propos"
+  description:
+    label: "Description"
+
+before_after:
+  singular: "Photo Avant / Après"
+  plural: "Photos Avant / Après"
+  title: "Avant / Après"
+  before_image:
+    label: "Image Avant"
+  after_image:
+    label: "Image Après"
+  featured_on_homepage:
+    label: "Mis en avant sur la page d'accueil"
+    help: "Afficher cette photo Avant / Après sur la page d'accueil du site."
+
+photo:
+  singular: "Photo"
+  plural: "Photos"
+  image:
+    label: "Image"
+  category:
+    label: "Catégorie"
+    work_in_progress: "En plein travail"
+    finished: "Oeuvre finie"
+
+schedule:
+  singular: "Horaire"
+  plural: "Horaires"
+  day_name:
+    label: "Nom du jour"
+    monday: "Lundi"
+    tuesday: "Mardi"
+    wednesday: "Mercredi"
+    thursday: "Jeudi"
+    friday: "Vendredi"
+    saturday: "Samedi"
+    sunday: "Dimanche"
+  mode:
+    label: "Mode"
+    closed: "Fermé"
+    open_all_day: "Ouvert toute la journée"
+    break: "Ouvert en matinée et en après-midi (pause le midi)"
+  morning_start:
+    label: "Début de journée"
+  morning_end:
+    label: "Fin de matinée"
+  afternoon_start:
+    label: "Début d'après-midi"
+  afternoon_end:
+    label: "Fin de journée"
+  
+service:
+  singular: "Service"
+  plural: "Services"
+  name:
+    label: "Nom du service"
+  prioritized:
+    label: "Prioritaire"
+    help: "Les services prioritaires seront affichés en premier sur le site."
+  image:
+    label: "Image du service"
+  icon:
+    label: "Icône du service"
+    help: "Code HTML de l'icône (par exemple, une icône SVG)."
+  
+social_network:
+  singular: "Réseau social"
+  plural: "Réseaux sociaux"
+  name:
+    label: "Nom du réseau social"
+  icon:
+    label: "Icône du réseau social"
+    help: "Code HTML de l'icône (par exemple, une icône lord-icon)."
+  link:
+    label: "Lien du réseau social"

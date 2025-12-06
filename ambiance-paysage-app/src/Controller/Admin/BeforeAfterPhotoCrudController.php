@@ -8,7 +8,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
-use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -20,28 +19,34 @@ class BeforeAfterPhotoCrudController extends AbstractCrudController
         return BeforeAfterPhoto::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('before_after.singular')
+            ->setEntityLabelInPlural('before_after.plural');
+    }
+
     public function configureFields(string $pageName): iterable
     {
-        yield FormField::addPanel('Before/After Images');
-
-        yield ImageField::new('beforeImage', 'Before Image')
+        yield ImageField::new('beforeImage', 'before_after.before_image.label')
             ->setBasePath('/uploads/before_after')
             ->onlyOnIndex();
 
-        yield ImageField::new('afterImage', 'After Image')
+        yield ImageField::new('afterImage', 'before_after.after_image.label')
             ->setBasePath('/uploads/before_after')
             ->onlyOnIndex();
 
-        yield Field::new('beforeImageFile', 'Before Image')
+        yield Field::new('beforeImageFile', 'before_after.before_image.label')
             ->setFormType(VichImageType::class)
             ->onlyOnForms();
 
-        yield Field::new('afterImageFile', 'After Image')
+        yield Field::new('afterImageFile', 'before_after.after_image.label')
             ->setFormType(VichImageType::class)
             ->onlyOnForms();
 
-        yield BooleanField::new('featuredOnHomepage')
+        yield BooleanField::new('featuredOnHomepage', 'before_after.featured_on_homepage.label')
             ->renderAsSwitch(true)
+            ->setHelp('before_after.featured_on_homepage.help')
             ->addCssClass('featured-on-homepage-switch');
     }
 
@@ -79,5 +84,4 @@ class BeforeAfterPhotoCrudController extends AbstractCrudController
         $assets->addJsFile('controllers/before_after_listing.js', Crud::PAGE_INDEX);
         return $assets;
     }
-
 }

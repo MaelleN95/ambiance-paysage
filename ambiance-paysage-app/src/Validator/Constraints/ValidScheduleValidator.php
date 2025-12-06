@@ -46,7 +46,7 @@ class ValidScheduleValidator extends ConstraintValidator
             $schedule->getMorningStart() && $schedule->getMorningEnd() &&
             $schedule->getMorningStart() > $schedule->getMorningEnd()
         ) {
-            $this->context->buildViolation('Morning Start doit être avant Morning End')
+            $this->context->buildViolation('Le début de la journée doit être avant la fin de la matinée')
                 ->atPath('morningStart')
                 ->addViolation();
         }
@@ -55,7 +55,7 @@ class ValidScheduleValidator extends ConstraintValidator
             $schedule->getMorningEnd() && $schedule->getAfternoonStart() &&
             $schedule->getMorningEnd() > $schedule->getAfternoonStart()
         ) {
-            $this->context->buildViolation('Morning End doit être avant Afternoon Start')
+            $this->context->buildViolation('La fin de la matinée doit être avant le début de l\'après-midi')
                 ->atPath('morningEnd')
                 ->addViolation();
         }
@@ -64,7 +64,7 @@ class ValidScheduleValidator extends ConstraintValidator
             $schedule->getAfternoonStart() && $schedule->getAfternoonEnd() &&
             $schedule->getAfternoonStart() > $schedule->getAfternoonEnd()
         ) {
-            $this->context->buildViolation('Afternoon Start doit être avant Afternoon End')
+            $this->context->buildViolation('Le début de l\'après-midi doit être avant la fin de la journée')
                 ->atPath('afternoonStart')
                 ->addViolation();
         }
@@ -80,25 +80,25 @@ class ValidScheduleValidator extends ConstraintValidator
     {
         if ($schedule->getMorningStart() && $schedule->getAfternoonEnd()) {
             if ($schedule->getMorningStart() > $schedule->getAfternoonEnd()) {
-                $this->context->buildViolation('Morning Start doit être avant Afternoon End')
+                $this->context->buildViolation('Le début de la journée doit être avant la fin de la journée')
                     ->atPath('morningStart')
                     ->addViolation();
             }
         } else {
             if (!$schedule->getMorningStart()) {
-                $this->context->buildViolation('Morning Start doit être défini lorsque le jour est ouvert.')
+                $this->context->buildViolation('Le début de la journée doit être définie lorsque le jour est ouvert.')
                     ->atPath('morningStart')
                     ->addViolation();
             }
             if (!$schedule->getAfternoonEnd()) {
-                $this->context->buildViolation('Afternoon End doit être défini lorsque le jour est ouvert.')
+                $this->context->buildViolation('la fin de la journée doit être définie lorsque le jour est ouvert.')
                     ->atPath('afternoonEnd')
                     ->addViolation();
             }
         }
         foreach (['morningEnd', 'afternoonStart'] as $prop) {
             if ($schedule->{'get' . ucfirst($prop)}()) {
-                $this->context->buildViolation("$prop doit être vide lorsque le jour est ouvert.")
+                $this->context->buildViolation("Ce champ doit être vide lorsque le jour est ouvert sans pause.")
                     ->atPath($prop)
                     ->addViolation();
             }

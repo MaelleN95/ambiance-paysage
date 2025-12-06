@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Service;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -17,24 +18,32 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('service.singular')
+            ->setEntityLabelInPlural('service.plural');
+    }
+
+
     public function configureFields(string $pageName): iterable
     {
-            yield TextField::new('name');
+        yield TextField::new('name', 'service.name.label');
 
-            # @TODO : SUPER ADMIN ONLY
-            yield BooleanField::new('prioritized')
-                ->onlyOnForms();
+        # @TODO : SUPER ADMIN ONLY
+        yield BooleanField::new('prioritized', 'service.prioritized.label')
+            ->setHelp('service.prioritized.help')
+            ->onlyOnForms();
 
-            # @TODO : SUPER ADMIN ONLY
-            yield Field::new('imageFile', 'Image')
-                ->setFormType(VichImageType::class)
-                ->onlyOnForms();
+        # @TODO : SUPER ADMIN ONLY
+        yield Field::new('imageFile', 'service.image.label')
+            ->setFormType(VichImageType::class)
+            ->onlyOnForms();
 
-            # @TODO : SUPER ADMIN ONLY
-            yield TextareaField::new('icon')
-                ->setRequired(false)
-                ->onlyOnForms();
-
-
+        # @TODO : SUPER ADMIN ONLY
+        yield TextareaField::new('icon', 'service.icon.label')
+            ->setRequired(false)
+            ->setHelp('service.icon.help')
+            ->onlyOnForms();
     }
 }

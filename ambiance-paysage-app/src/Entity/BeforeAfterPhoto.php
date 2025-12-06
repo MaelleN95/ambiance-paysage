@@ -2,9 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\BeforeAfterPhotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BeforeAfterPhotoRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: BeforeAfterPhotoRepository::class)]
 class BeforeAfterPhoto
 {
@@ -16,11 +20,20 @@ class BeforeAfterPhoto
     #[ORM\Column(length: 255)]
     private ?string $beforeImage = null;
 
+    #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "beforeImage")]
+    private ?File $beforeImageFile = null;
+
     #[ORM\Column(length: 255)]
     private ?string $afterImage = null;
+    
+    #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "afterImage")]
+    private ?File $afterImageFile = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $featuredOnHomepage = null;
+
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -61,5 +74,27 @@ class BeforeAfterPhoto
         $this->featuredOnHomepage = $featuredOnHomepage;
 
         return $this;
+    }
+
+    public function setBeforeImageFile(?File $file = null): void
+    {
+        $this->beforeImageFile = $file;
+        if ($file) $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getBeforeImageFile(): ?File
+    {
+        return $this->beforeImageFile;
+    }
+
+    public function setAfterImageFile(?File $file = null): void
+    {
+        $this->afterImageFile = $file;
+        if ($file) $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    public function getAfterImageFile(): ?File
+    {
+        return $this->afterImageFile;
     }
 }

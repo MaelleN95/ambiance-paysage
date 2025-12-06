@@ -21,7 +21,6 @@ class Photo
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: "photo", fileNameProperty: "image")]
-    #[Assert\NotNull(message: "Veuillez uploader une image.")]
     #[Assert\File(
         maxSize: '5M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],

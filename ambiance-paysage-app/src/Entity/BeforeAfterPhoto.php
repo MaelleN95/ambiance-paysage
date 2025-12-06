@@ -22,7 +22,6 @@ class BeforeAfterPhoto
     private ?string $beforeImage = null;
 
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "beforeImage")]
-    #[Assert\NotNull(message: "Veuillez uploader une image avant.")]
     #[Assert\File(
         maxSize: '5M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
@@ -34,7 +33,6 @@ class BeforeAfterPhoto
     private ?string $afterImage = null;
 
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "afterImage")]
-    #[Assert\NotNull(message: "Veuillez uploader une image après.")]
     #[Assert\File(
         maxSize: '5M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],

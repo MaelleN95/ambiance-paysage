@@ -23,7 +23,7 @@ class BeforeAfterPhoto
 
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "beforeImage")]
     #[Assert\File(
-        maxSize: '5M',
+        maxSize: '15M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
         mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
     )]
@@ -34,7 +34,7 @@ class BeforeAfterPhoto
 
     #[Vich\UploadableField(mapping: "before_after_photo", fileNameProperty: "afterImage")]
     #[Assert\File(
-        maxSize: '5M',
+        maxSize: '15M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
         mimeTypesMessage: "Veuillez uploader une image valide (jpg, png ou webp)."
     )]

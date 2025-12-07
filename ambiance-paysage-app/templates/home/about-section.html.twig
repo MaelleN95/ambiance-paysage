@@ -1,0 +1,15 @@
+<section id="about-section">
+    <div class="max-width-container">
+        <h2>À propos</h2>
+        {%if descriptions is empty %}
+            <p>Aucune description disponible pour le moment.</p>
+        {% endif %}
+        {% for description in descriptions %}
+            {{ description|raw }}
+        {% endfor %}
+
+        <div class="button-container">
+            <a href="{{ path('app_contact') }}" class="contact-button">Contactez-moi</a>
+        </div>
+    </div>
+</section>

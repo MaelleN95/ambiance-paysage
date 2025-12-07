@@ -5,6 +5,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/services.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/about.css') }}">
 
     <style>
     </style>
@@ -13,4 +14,5 @@
 {% block body %}
 
 {% include 'home/services-section.html.twig' %}
+{% include 'home/about-section.html.twig' %}
 {% endblock %}

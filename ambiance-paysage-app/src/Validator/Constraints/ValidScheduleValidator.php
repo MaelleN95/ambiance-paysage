@@ -42,6 +42,31 @@ class ValidScheduleValidator extends ConstraintValidator
     */
     private function getErrorsForBreakMode(Schedule $schedule): void
     {
+
+        if (!$schedule->getMorningStart()) {
+            $this->context->buildViolation('Le début de la journée doit être renseigné.')
+                ->atPath('morningStart')
+                ->addViolation();
+        }
+
+        if (!$schedule->getMorningEnd()) {
+            $this->context->buildViolation('La fin de matinée doit être renseigné.')
+                ->atPath('morningEnd')
+                ->addViolation();
+        }
+
+        if (!$schedule->getAfternoonStart()) {
+            $this->context->buildViolation('Le début de l\'après midi doit être renseigné.')
+                ->atPath('afternoonStart')
+                ->addViolation();
+        }
+
+        if (!$schedule->getAfternoonEnd()) {
+            $this->context->buildViolation('La fin de journée doit être renseigné.')
+                ->atPath('afternoonEnd')
+                ->addViolation();
+        }
+
         if (
             $schedule->getMorningStart() && $schedule->getMorningEnd() &&
             $schedule->getMorningStart() > $schedule->getMorningEnd()

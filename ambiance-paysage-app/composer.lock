@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6d05f01095a3440715752cf7dc7f747",
+    "content-hash": "766e8a609c92c76c65d272c89bb02152",
     "packages": [
         {
             "name": "composer/semver",
@@ -8361,6 +8361,50 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "cracksalad/imagick-ide-helper",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cracksalad/imagick-ide-helper-for-php.git",
+                "reference": "58ca8e8376a119c84791abd38cf6d20a53b70ba9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cracksalad/imagick-ide-helper-for-php/zipball/58ca8e8376a119c84791abd38cf6d20a53b70ba9",
+                "reference": "58ca8e8376a119c84791abd38cf6d20a53b70ba9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagick": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Wahlen",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "IDE help files for PHP's Imagick extension.",
+            "keywords": [
+                "ide-helper",
+                "imagick"
+            ],
+            "support": {
+                "issues": "https://github.com/cracksalad/imagick-ide-helper-for-php/issues",
+                "source": "https://github.com/cracksalad/imagick-ide-helper-for-php/tree/v1.1"
+            },
+            "time": "2025-08-16T15:08:10+00:00"
+        },
         {
             "name": "masterminds/html5",
             "version": "2.10.0",

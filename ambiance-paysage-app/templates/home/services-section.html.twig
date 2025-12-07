@@ -1,8 +1,9 @@
 <section id="services-section">
     <div class="max-width-container">
         <h2>Mes services</h2>
+
         {% for service in prioritizedServices %}
-            <div class="service prioritized">
+            <div class="service prioritized {% if loop.index is even %}reverse{% endif %}">
                 <img src="/uploads/services/{{ service.image }}" alt="{{ service.name }} image">
                 <div class="service-info">
                     <h3>{{ service.name }}</h3>
@@ -10,5 +11,18 @@
                 </div>
             </div>
         {% endfor %}
+
+
+        <div class="service prioritized {% if prioritizedServices|length is odd %}reverse{% endif %}">
+            <img src="/uploads/services/other-services.png" alt="Autres services">
+            <div class="other-service service-info">
+                <h3 class="other-service-h3">Et ce n’est pas tout ...</h3>
+                <ul>
+                    {% for service in otherServices %}
+                        <li>{{ service.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </div>
 </section>

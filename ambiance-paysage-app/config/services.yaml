@@ -7,3 +7,10 @@ services:
 
     App\:
         resource: '../src/'
+    
+
+    App\Twig\AppExtension:
+        arguments:
+            $socialNetworkRepository: '@App\Repository\SocialNetworkRepository'
+            $scheduleRepository: '@App\Repository\ScheduleRepository'
+        tags: ['twig.extension']

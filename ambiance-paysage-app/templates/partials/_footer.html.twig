@@ -5,52 +5,46 @@
             <p>23 impasse des Cigales<br>
             13124 Peypin<p>
             <ul>
-                <li><span class="day-name">Lundi</span><span>08:00 - 12:00 / 14:00 - 18:00</span></li>
-                <li><span class="day-name">Mardi</span><span>08:00 - 12:00 / 14:00 - 18:00</span></li>
-                <li><span class="day-name">Mercredi</span><span>08:00 - 12:00 / 14:00 - 18:00</span></li>
-                <li><span class="day-name">Jeudi</span><span>08:00 - 12:00 / 14:00 - 18:00</span></li>
-                <li><span class="day-name">Vendredi</span><span>08:00 - 12:00 / 14:00 - 18:00</span></li>
-                <li><span class="day-name">Samedi</span><span>Fermé</span></li> 
-                <li><span class="day-name">Dimanche</span><span>Fermé</span></li>
+                {% for schedule in schedules %}
+                    <li>
+                        <span class="day-name">
+                            {{ schedule.dayName|trans }}
+                        </span>
+
+                        {% if schedule.mode == 'closed' %}
+                            <span>Fermé</span>
+
+                        {% elseif schedule.mode == 'open' %}
+                            <span>
+                                {{ schedule.morningStart|date('H:i') }}
+                                -
+                                {{ schedule.afternoonEnd|date('H:i') }}
+                            </span>
+
+                        {% elseif schedule.mode == 'break' %}
+                            <span>
+                                {{ schedule.morningStart|date('H:i') }}
+                                -
+                                {{ schedule.morningEnd|date('H:i') }}
+                                /
+                                {{ schedule.afternoonStart|date('H:i') }}
+                                -
+                                {{ schedule.afternoonEnd|date('H:i') }}
+                            </span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
             </ul>
+
         </div>
         <div class="text-content">
             <div class="social-media">
-            <h4>Retrouvez-nous sur les réseaux sociaux</h4>
-                <a href="https://www.facebook.com/profile.php?id=100057036986460" target="_blank" rel="noopener">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/cxauoejw.json"
-                        trigger="hover"
-                        state="hover-draw"
-                        stroke="bold"
-                        colors="primary:#000000,secondary:#000000"
-                    </lord-icon>
-                </a>
-                <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/dsdlqjde.json"
-                        trigger="hover"
-                        state="hover-draw"
-                        stroke="bold"
-                        colors="primary:#000000,secondary:#000000"
-                    </lord-icon>
-                </a>
-                <a href="mailto:tonadresse@mail.com">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/ozlkyfxg.json"
-                        trigger="hover"
-                        state="hover-click"
-                        stroke="bold"
-                        colors="primary:#000000,secondary:#000000"
-                    </lord-icon>
-                </a>
-                <a href="tel:+33000000000">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/wtywrnoz.json"
-                        trigger="hover"
-                        colors="primary:#000000"
-                    </lord-icon>
-                </a>
+                <h4>Retrouvez-nous sur les réseaux sociaux</h4>
+                {% for socialNetwork in socialNetworks %}
+                    <a href="{{ socialNetwork.link }}" target="_blank" rel="noopener" title="Lien vers {{ socialNetwork.name }}">
+                        {{ socialNetwork.icon|raw }}
+                    </a>
+                {% endfor %}
             </div>
             <div class="page-links">
                 <h4>Liens utiles</h4>

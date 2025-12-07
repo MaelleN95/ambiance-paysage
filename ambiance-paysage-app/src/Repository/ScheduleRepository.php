@@ -15,4 +15,25 @@ class ScheduleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Schedule::class);
     }
+
+    public function findAllOrderedByDay(): array
+    {
+        $schedules = $this->findAll();
+
+        $order = [
+            'Monday'    => 1,
+            'Tuesday'   => 2,
+            'Wednesday' => 3,
+            'Thursday'  => 4,
+            'Friday'    => 5,
+            'Saturday'  => 6,
+            'Sunday'    => 7,
+        ];
+
+        usort($schedules, function ($a, $b) use ($order) {
+            return $order[$a->getDayName()] <=> $order[$b->getDayName()];
+        });
+
+        return $schedules;
+    }
 }

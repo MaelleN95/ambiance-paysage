@@ -79,3 +79,13 @@ social_network:
     help: "Code HTML de l'icône (par exemple, une icône lord-icon)."
   link:
     label: "Lien du réseau social"
+
+
+
+Monday: Lundi
+Tuesday: Mardi
+Wednesday: Mercredi
+Thursday: Jeudi
+Friday: Vendredi
+Saturday: Samedi
+Sunday: Dimanche

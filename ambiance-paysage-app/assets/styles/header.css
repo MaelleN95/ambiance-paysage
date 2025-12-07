@@ -5,8 +5,9 @@ header {
     right: 0;
     background-color: #2e8b57;
     color: white;
-    padding: 10px;
+    padding: 10px 30px;
     transition: transform 0.2s ease-in-out;
+    z-index: 1000;
 }
 
 header.slide-up {

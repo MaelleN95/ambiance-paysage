@@ -1,0 +1,78 @@
+<div data-controller="before-after-photo" class="before-after-photo">
+    <div class="before-after-photo-overlay" data-before-after-photo-target="overlay">
+        <img src="{{ asset('images/avant.jpg') }}" class="before-after-photo-img before-img">
+    </div>
+
+    <img src="{{ asset('images/apres.jpg') }}" class="before-after-photo-img after-img">
+
+
+    <div class="before-after-photo-handle" data-before-after-photo-target="handle">
+        <div class="before-after-photo-line"></div>
+        <div class="before-after-photo-arrows">
+            <span class="left"><</span>
+            <span class="right">></span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+
+.before-after-photo {
+    position: relative;
+    width: 900px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    user-select: none;
+}
+
+.before-after-photo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 900px;
+    object-fit: cover;
+}
+
+.before-after-photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.before-after-photo-overlay .before-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 900px;           /* conserve le ratio natif */
+    height:auto;          /* ou width: 100% selon ce que tu veux */
+    object-fit: cover; 
+    z-index: 2;
+}
+
+.before-after-photo-handle {
+    position: absolute;
+    top: 0;
+    left: calc(var(--overlay-width) - 0px);
+    transform: translateX(-50%);
+    height: 100%;
+    cursor: ew-resize;
+}
+
+.before-after-photo-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: #fff;
+    z-index: 3;
+}
+
+</style>

@@ -84,6 +84,25 @@ export default class extends Controller {
         )`;
 
         this.element.style.setProperty("--overlay-width", `${clampedX}px`);
+
+  // --- Ligne blanche sur la diagonale ---
+    const sep = this.element.querySelector('.separator-line');
+
+    const x1 = topX;
+    const y1 = 0;
+    const x2 = bottomRightX;
+    const y2 = overlayHeight;
+
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const length = Math.sqrt(dx*dx + dy*dy);
+    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+    // ajustement de 90° pour que la ligne verticale suive la diagonale
+    sep.style.left = `${x1}px`;
+    sep.style.top = `${y1}px`;
+    sep.style.height = `${length}px`;
+    sep.style.transform = `rotate(${angle - 90}deg)`;
     }
 
 

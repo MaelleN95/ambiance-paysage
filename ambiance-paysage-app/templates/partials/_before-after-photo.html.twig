@@ -4,6 +4,7 @@
     </div>
 
     <img src="{{ asset('images/apres.jpg') }}" class="before-after-photo-img after-img">
+    <div class="separator-line"></div>
 
 
     <div class="before-after-photo-handle" data-before-after-photo-target="handle">
@@ -47,7 +48,7 @@
     height: 100%;
     overflow: hidden;
     z-index: 1;
-    
+
     clip-path: polygon(
     0% 0%,
     100% 0%,
@@ -111,4 +112,12 @@
     z-index: 4;
 }
 
+.separator-line {
+    position: absolute;
+    width: 2px;              /* épaisseur */
+    background: white;        /* couleur */
+    pointer-events: none;     /* aucune interaction */
+    transform-origin: top left;
+    z-index: 10;              /* au-dessus de l'image overlay */
+}
 </style>

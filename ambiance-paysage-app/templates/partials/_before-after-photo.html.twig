@@ -1,9 +1,9 @@
 <div data-controller="before-after-photo" class="before-after-photo">
     <div class="before-after-photo-overlay" data-before-after-photo-target="overlay">
-        <img src="{{ asset('images/avant.jpg') }}" class="before-after-photo-img before-img">
+        <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.beforeImage) }}" class="before-after-photo-img before-img">
     </div>
 
-    <img src="{{ asset('images/apres.jpg') }}" class="before-after-photo-img after-img">
+    <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.afterImage) }}" class="before-after-photo-img after-img">
     <div class="separator-line"></div>
     <div class="before-after-photo-arrows">
         <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24" fill="none">    

@@ -15,4 +15,13 @@ class BeforeAfterPhotoRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, BeforeAfterPhoto::class);
     }
+
+    public function findLast(int $limit = 4): array
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.id', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -85,24 +85,37 @@ export default class extends Controller {
 
         this.element.style.setProperty("--overlay-width", `${clampedX}px`);
 
-  // --- Ligne blanche sur la diagonale ---
-    const sep = this.element.querySelector('.separator-line');
+        // --- Ligne blanche sur la diagonale ---
+        const sep = this.element.querySelector('.separator-line');
 
-    const x1 = topX;
-    const y1 = 0;
-    const x2 = bottomRightX;
-    const y2 = overlayHeight;
+        const x1 = topX;
+        const y1 = 0;
+        const x2 = bottomRightX;
+        const y2 = overlayHeight;
 
-    const dx = x2 - x1;
-    const dy = y2 - y1;
-    const length = Math.sqrt(dx*dx + dy*dy);
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const length = Math.sqrt(dx*dx + dy*dy);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
 
-    // ajustement de 90° pour que la ligne verticale suive la diagonale
-    sep.style.left = `${x1}px`;
-    sep.style.top = `${y1}px`;
-    sep.style.height = `${length}px`;
-    sep.style.transform = `rotate(${angle - 90}deg)`;
+        // ajustement de 90° pour que la ligne verticale suive la diagonale
+        sep.style.left = `${x1}px`;
+        sep.style.top = `${y1}px`;
+        sep.style.height = `${length}px`;
+        sep.style.transform = `rotate(${angle - 90}deg)`;
+
+        const arrows = this.element.querySelector('.before-after-photo-arrows');
+
+        // milieu du segment
+        const midX = (x1 + x2) / 2;
+        const midY = (y1 + y2) / 2;
+
+        // positionner le div centré sur le milieu du segment
+        arrows.style.left = `${midX}px`;
+        arrows.style.top = `${midY}px`;
+        arrows.style.transform = `translate(-50%, -50%)`;
+        // translate(-50%, -50%) pour centrer le div sur le milieu exact
+
     }
 
 

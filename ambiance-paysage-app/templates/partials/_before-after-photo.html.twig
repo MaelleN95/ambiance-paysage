@@ -24,7 +24,7 @@
 
 .before-after-photo {
     position: relative;
-    width: 900px;
+    width: 700px;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     user-select: none;
@@ -35,7 +35,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    max-width: 900px;
+    max-width: 700px;
     object-fit: cover;
 }
 
@@ -46,12 +46,6 @@
     width: 50%;
     height: 100%;
     overflow: hidden;
-    clip-path: polygon(
-    0% 0%,
-    100% 0%,
-    80% 100%,
-    0% 100%
-    );
     z-index: 1;
 }
 
@@ -60,7 +54,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 900px;
+    width: 700px;
     height:auto;
     object-fit: cover;
 }
@@ -72,6 +66,7 @@
     transform: translateX(-50%);
     height: 100%;
     cursor: ew-resize;
+    z-index: 2;
 }
 
 .before-after-photo-line {
@@ -88,7 +83,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%);
     z-index: 3;
 }
 
@@ -96,7 +90,8 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    z-index: 3;
+    transform: translate(-50%, -50%);
+    z-index: 4;
 }
 
 </style>

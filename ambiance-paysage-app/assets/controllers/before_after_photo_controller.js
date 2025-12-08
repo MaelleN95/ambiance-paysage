@@ -55,20 +55,7 @@ export default class extends Controller {
     }
 
     setPosition(x) {
-        const overlayHeight = this.overlayTarget.clientHeight;
-        const slopeWidth = 40;
-
-        const bottomRightX = Math.max(slopeWidth, x - slopeWidth);
-
-        this.overlayTarget.style.clipPath = `polygon(
-            0 0,
-            ${x}px 0,
-            ${bottomRightX}px ${overlayHeight}px,
-            0 ${overlayHeight}px
-        )`;
-
         this.overlayTarget.style.width = `${x}px`;
         this.element.style.setProperty("--overlay-width", `${x}px`);
-
     }
 }

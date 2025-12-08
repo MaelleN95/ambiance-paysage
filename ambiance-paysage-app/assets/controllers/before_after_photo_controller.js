@@ -55,7 +55,36 @@ export default class extends Controller {
     }
 
     setPosition(x) {
-        this.overlayTarget.style.width = `${x}px`;
-        this.element.style.setProperty("--overlay-width", `${x}px`);
+        const rect = this.element.getBoundingClientRect();
+        const clampedX = Math.min(Math.max(0, x), rect.width);
+
+        const overlayHeight = this.overlayTarget.clientHeight;
+        const slopeWidth = 150;
+
+        const p = clampedX / rect.width;
+
+        let topX;
+
+        if (p <= 0.75) {
+            topX = clampedX;
+        } else {
+            const ratio = (p - 0.75) / 0.25;
+            const start = rect.width * 0.75;
+            const end = rect.width + slopeWidth;
+            topX = start + (end - start) * ratio;
+        }
+
+        const bottomRightX = topX - slopeWidth;
+
+        this.overlayTarget.style.clipPath = `polygon(
+            0 0,
+            ${topX}px 0,
+            ${bottomRightX}px ${overlayHeight}px,
+            0 ${overlayHeight}px
+        )`;
+
+        this.element.style.setProperty("--overlay-width", `${clampedX}px`);
     }
+
+
 }

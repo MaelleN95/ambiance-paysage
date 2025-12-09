@@ -39,3 +39,20 @@
     margin: 0;
     margin-bottom: 20px;
 }
+
+@media (max-width: 768px) {
+    #services-section .service.prioritized,
+    #services-section .service.prioritized.reverse {
+        flex-direction: column;
+    }
+
+    #services-section .service-info {
+        min-height: 300px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #services-section .service img {
+        width: 100%;
+    }
+}

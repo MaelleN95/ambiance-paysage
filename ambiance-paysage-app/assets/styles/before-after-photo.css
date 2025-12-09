@@ -1,10 +1,10 @@
 :root {
-    --image-witdh: 700px;
+    --image-width: 700px;
 }
 
 .before-after-photo {
     position: relative;
-    width: var(--image-witdh);
+    width: var(--image-width);
     aspect-ratio: 16 / 9;
     overflow: hidden;
     user-select: none;
@@ -15,7 +15,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    max-width: var(--image-witdh);
+    max-width: var(--image-width);
     object-fit: cover;
     user-drag: none;
     -webkit-user-drag: none;
@@ -44,7 +44,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: var(--image-witdh);
+    width: var(--image-width);
     height:auto;
     object-fit: cover;
 }
@@ -84,4 +84,16 @@
 .before-after-photo-arrows svg {
     width: 30px;
     height: 30px;
+}
+
+@media (max-width: 1440px) {
+    :root {
+        --image-width: 500px;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --image-width: 100%;
+    }
 }

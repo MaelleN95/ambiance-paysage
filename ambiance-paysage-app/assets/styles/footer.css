@@ -18,6 +18,7 @@ footer .footer-logo {
 footer .address-hours {
     display: flex;
     flex-direction: column;
+    min-width: 400px;
 }
 
 footer .social-media lord-icon {
@@ -40,6 +41,7 @@ footer .page-links a:hover {
 footer .address-hours ul {
     list-style: none;
     padding: 0;
+    margin-right: 20px;
 }
 
 footer .address-hours ul li {
@@ -51,4 +53,32 @@ footer .address-hours ul li {
 footer .address-hours ul li .day-name {
     font-weight: bold;
     min-width: 100px;
+}
+
+@media (max-width:1024px) {
+    footer > div {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    footer .address-hours {
+        min-width:auto;
+    }
+}
+
+@media (max-width:480px) {
+    footer .address-hours {
+        align-items: center;
+        justify-content: center;
+    }
+
+    footer .address-hours p {
+        text-align: center;
+    }
+
+    footer .address-hours ul li {
+        display: flex;
+        flex-direction: column;
+    }
 }

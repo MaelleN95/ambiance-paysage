@@ -1,43 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GalleryController!{% endblock %}
+{% block title %}Galerie photos{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/before-after-photo.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/gallery.css') }}">
 {% endblock %}
 
 {% block body %}
+<section id="gallery-section">
+    <div class="max-width-container">
+        <h2> Galerie photos</h2>
 
-<h2> Galerie photos</h2>
+        <h3>Avant / Après</h3>
 
-<h3>Avant / Après</h3>
+        <div class="gallery-flex">
+        {% for beforeAfterPhotos in beforeAfterPhotosList %}
+            {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
+        {% endfor %}
+        </div>
+        <div class="see-more-container">
+            <a href="{{ path('app_gallery_more', {'category': 'before_after'}) }}" class="see-more">Voir plus</a>
+        </div>
 
-{% for beforeAfterPhotos in beforeAfterPhotosList %}
-    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
-{% endfor %}
+        <h3>En plein travail</h3>
 
-<a href="{{ path('app_gallery_more', {'category': 'before_after'}) }}">Voir plus</a>
+        <div class="gallery-flex">
+        {% for workInProgressPhoto in workInProgress %}
+            <div class="work-in-progress-photo">
+                <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
+            </div>
+        {% endfor %}
+        </div>
+        <div class="see-more-container">
+            <a href="{{ path('app_gallery_more', {'category': 'work_in_progress'}) }}" class="see-more">Voir plus</a>
+        </div>
 
+        <h3>Oeuvres finies</h3>
 
-<h3>En plein travail</h3>
-
-{% for workInProgressPhoto in workInProgress %}
-    <div class="work-in-progress-photo">
-        <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
+        <div class="gallery-flex">
+        {% for finishedPhoto in finished %}
+            <div class="finished-photo">
+                <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
+            </div>
+        {% endfor %}
+        </div>
+        <div class="see-more-container">
+            <a href="{{ path('app_gallery_more', {'category': 'finished'}) }}" class="see-more">Voir plus</a>
+        </div>
     </div>
-{% endfor %}
-
-<a href="{{ path('app_gallery_more', {'category': 'work_in_progress'}) }}">Voir plus</a>
-
-<h3>Oeuvres finies</h3>
-
-{% for finishedPhoto in finished %}
-    <div class="finished-photo">
-        <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
-    </div>
-{% endfor %}
-
-<a href="{{ path('app_gallery_more', {'category': 'finished'}) }}">Voir plus</a>
-
+</section>
 {% endblock %}

@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GalleryController!{% endblock %}
+{% block title %}{{ category == 'before_after' ? 'Avant / Après' : (category == 'work_in_progress' ? 'En plein travail' : (category == 'finished' ? 'Oeuvres finies' : 'Galerie photos - Voir plus')) }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/before-after-photo.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/gallery.css') }}">
 {% endblock %}
 
 {% block body %}
-<h2> Galerie photos - Voir plus</h2>
+<section id="gallery-section">
+    <div class="max-width-container">
+        <a href="{{ path('app_gallery') }}" class="back-button">Retour</a>
+        <h2> Galerie photos</h2>
 
-{% if category == 'before_after' %}
-    <h3>Avant / Après</h3>
+        {% if category == 'before_after' %}
+            <h3>Avant / Après</h3>
 
-    {% for beforeAfterPhotos in photos %}
-        {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
-    {% endfor %}
-{% elseif category == 'work_in_progress' %}
-    <h3>En plein travail</h3>
+            <div class="gallery-flex">
+                {% for beforeAfterPhotos in photos %}
+                    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
+                {% endfor %}
+            </div>
+        {% elseif category == 'work_in_progress' %}
+            <h3>En plein travail</h3>
 
-    {% for workInProgressPhoto in photos %}
-        <div class="work-in-progress-photo">
-            <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
-        </div>
-    {% endfor %}
-{% elseif category == 'finished' %}
-    <h3>Oeuvres finies</h3>
+            <div class="gallery-flex">
+                {% for workInProgressPhoto in photos %}
+                    <div class="work-in-progress-photo">
+                        <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
+                    </div>
+                {% endfor %}
+            </div>
+        {% elseif category == 'finished' %}
+            <h3>Oeuvres finies</h3>
 
-    {% for finishedPhoto in photos %}
-        <div class="finished-photo">
-            <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
-        </div>
-    {% endfor %}
-{% else %}
-    <p>Catégorie inconnue.</p>
-{% endif %}
-
+            <div class="gallery-flex">
+                {% for finishedPhoto in photos %}
+                    <div class="finished-photo">
+                        <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Catégorie inconnue.</p>
+        {% endif %}
+        <a href="{{ path('app_gallery') }}" class="back-button">Retour</a>
+    </div>
+</section>
 {% endblock %}

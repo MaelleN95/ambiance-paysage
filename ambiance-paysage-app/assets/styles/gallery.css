@@ -1,0 +1,61 @@
+#gallery-section .gallery-flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+#gallery-section .work-in-progress-photo img, .finished-photo img {
+    width: 700px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    user-select: none;
+    object-fit: cover;
+}
+
+#gallery-section .back-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #8d8d8dfe;
+    color :#454545fe;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#gallery-section .back-button:hover {
+    background-color: #8b8a8afe;
+    color: white;
+}
+
+#gallery-section .see-more-container{
+    display: flex ;
+    justify-content: center;
+}
+
+#gallery-section .see-more {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 2px;
+    font-size: bold;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.3s;
+}
+
+#gallery-section .see-more:hover{
+        background-color: white;
+    color: black;
+    outline: 2px solid #4CAF50;
+}

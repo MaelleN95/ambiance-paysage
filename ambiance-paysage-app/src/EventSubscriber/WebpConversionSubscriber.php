@@ -39,6 +39,8 @@ class WebpConversionSubscriber implements EventSubscriberInterface
         }
 
         $imagick = new Imagick($originalPath);
+        $imagick->autoOrient();
+        $imagick->stripImage();
         $imagick->setImageFormat('webp');
         $imagick->setImageCompressionQuality(80);
 

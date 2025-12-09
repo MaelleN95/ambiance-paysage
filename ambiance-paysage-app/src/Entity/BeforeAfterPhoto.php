@@ -53,10 +53,10 @@ class BeforeAfterPhoto
 
     public function getBeforeImage(): ?string
     {
-        return $this->beforeImage;
+        return $this->beforeImage ?? null;
     }
 
-    public function setBeforeImage(string $beforeImage): static
+    public function setBeforeImage(?string $beforeImage): static
     {
         $this->beforeImage = $beforeImage;
 
@@ -65,10 +65,10 @@ class BeforeAfterPhoto
 
     public function getAfterImage(): ?string
     {
-        return $this->afterImage;
+        return $this->afterImage ?? null;
     }
 
-    public function setAfterImage(string $afterImage): static
+    public function setAfterImage(?string $afterImage): static
     {
         $this->afterImage = $afterImage;
 

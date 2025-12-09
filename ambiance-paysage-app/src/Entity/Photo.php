@@ -46,10 +46,10 @@ class Photo
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return $this->image ?? null;
     }
 
-    public function setImage(string $image): static
+    public function setImage(?string $image): static
     {
         $this->image = $image;
 

@@ -53,12 +53,11 @@
     position: absolute;
     top: 0;
     left: calc(var(--overlay-width) - 75px);
-    transform: translateX(-50%);
+    transform: translateX(-40%);
     height: 100%;
-    width: 150px;
+    width: 160px;
     cursor: ew-resize;
-    z-index: 2;
-    
+    z-index: 2;    
 }
 
 .before-after-photo .separator-line {
@@ -86,6 +85,12 @@
     height: 30px;
 }
 
+.before-after-photo,
+.before-after-photo-handle {
+    touch-action: none;
+}
+
+
 @media (max-width: 1440px) {
     :root {
         --image-width: 500px;
@@ -95,5 +100,11 @@
 @media (max-width: 1024px) {
     :root {
         --image-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .before-after-photo .separator-line {
+        width: 5px;
     }
 }

@@ -17,6 +17,9 @@
     width: 100%;
     max-width: var(--image-witdh);
     object-fit: cover;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 .before-after-photo-overlay {

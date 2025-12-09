@@ -43,4 +43,14 @@ class PhotoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByCategoryOrdered(string $category): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.category = :c')
+            ->setParameter('c', $category)
+            ->orderBy('p.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

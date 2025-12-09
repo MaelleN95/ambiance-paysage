@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GalleryController!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/before-after-photo.css') }}">
+{% endblock %}
+
+{% block body %}
+<h2> Galerie photos - Voir plus</h2>
+
+{% if category == 'before_after' %}
+    <h3>Avant / Après</h3>
+
+    {% for beforeAfterPhotos in photos %}
+        {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
+    {% endfor %}
+{% elseif category == 'work_in_progress' %}
+    <h3>En plein travail</h3>
+
+    {% for workInProgressPhoto in photos %}
+        <div class="work-in-progress-photo">
+            <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
+        </div>
+    {% endfor %}
+{% elseif category == 'finished' %}
+    <h3>Oeuvres finies</h3>
+
+    {% for finishedPhoto in photos %}
+        <div class="finished-photo">
+            <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Catégorie inconnue.</p>
+{% endif %}
+
+{% endblock %}

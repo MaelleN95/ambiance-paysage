@@ -24,4 +24,12 @@ class BeforeAfterPhotoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllOrdered(): array
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -17,6 +17,9 @@
     {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
 {% endfor %}
 
+<a href="{{ path('app_gallery_more', {'category': 'before_after'}) }}">Voir plus</a>
+
+
 <h3>En plein travail</h3>
 
 {% for workInProgressPhoto in workInProgress %}
@@ -25,6 +28,8 @@
     </div>
 {% endfor %}
 
+<a href="{{ path('app_gallery_more', {'category': 'work_in_progress'}) }}">Voir plus</a>
+
 <h3>Oeuvres finies</h3>
 
 {% for finishedPhoto in finished %}
@@ -32,5 +37,7 @@
         <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
     </div>
 {% endfor %}
+
+<a href="{{ path('app_gallery_more', {'category': 'finished'}) }}">Voir plus</a>
 
 {% endblock %}

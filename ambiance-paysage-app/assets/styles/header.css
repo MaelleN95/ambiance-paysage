@@ -41,3 +41,131 @@ header nav ul li a:hover {
 header .header-logo {
     height: 50px;
 }
+
+
+header .burger {
+  display: none;
+}
+
+.header-overlay {
+  display: none;
+}
+
+/* Burger menu */
+
+.burger {
+  position: relative;
+  width: 35px;
+  height: 25px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 7;
+}
+
+#burger {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transform-origin: left center;
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform: translateY(-100%);
+}
+
+#burger:checked + .burger span:nth-of-type(1) {
+  transform: rotate(45deg);
+  left: 5px;
+}
+
+#burger:checked + .burger span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+#burger:checked + .burger span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  left: 5px;
+}
+
+@media (max-width: 768px) {
+
+  header .burger {
+    display: block;
+  }
+
+    header nav {
+        display: none;
+    }
+
+  header nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 1px;
+    background-color: white;
+  }
+
+  #burger:checked ~ nav {
+    display: flex;
+  }
+
+  #burger:checked ~ nav ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header:has(#burger:checked) .header-overlay {
+    display: block;
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  header nav {
+    position: fixed;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(50px);
+    padding: 20px 0 20px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+  }
+
+  header nav a {
+    margin: 1rem 0;
+  }
+}

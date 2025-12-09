@@ -1,16 +1,28 @@
-<header data-controller="scroll-header-movement" data-scroll-header-movement-target="header">
+<header data-controller="scroll-header-movement mobile-menu" data-scroll-header-movement-target="header" data-action="change->mobile-menu#toggleMenu">
     <div class="max-width-container">
         <div class="logo-container">
             <a href="{{ path('app_homepage') }}">
                 <img src="{{ asset('images/logos/logo-header.png') }}" alt="Logo Ambiance Paysage" class="header-logo">
             </a>
         </div>
-        <nav>
+
+        <input type="checkbox" id="burger" data-mobile-menu-target="burger"/>
+        <label class="burger" for="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav data-mobile-menu-target="headerNavLinks">
          <ul>
              <li><a href="{{ path('app_homepage') }}">Accueil</a></li>
              <li><a href="{{ path('app_gallery') }}">Galerie</a></li>
              <li><a href="{{ path('app_contact') }}">Contact</a></li>
          </ul>
         </nav>
+        <div class="header-overlay"
+            data-mobile-menu-target="overlay"
+            data-action="click->mobile-menu#closeMenu">
+        </div>
     </div>
 </header>

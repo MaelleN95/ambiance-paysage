@@ -32,4 +32,15 @@ class BeforeAfterPhotoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findFeaturedOnHomepageBeforeAfterPhotos(): ?BeforeAfterPhoto
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.featuredOnHomepage = :featured')
+            ->setParameter('featured', true)
+            ->orderBy('b.updatedAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

@@ -6,12 +6,19 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/services.css') }}">
     <link rel="stylesheet" href="{{ asset('styles/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/before-after-photo.css') }}">
 
     <style>
+
     </style>
 {% endblock %}
 
 {% block body %}
+
+
+{% if photosFeaturedOnHomePage %}
+    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': photosFeaturedOnHomePage} %}
+{% endif %}
 
 {% include 'home/services-section.html.twig' %}
 {% include 'home/about-section.html.twig' %}

@@ -101,15 +101,6 @@
     touch-action: none;
 }
 
-.gradient-for-home-page {
-    position: absolute;
-    top: 0;
-    right:0;
-    width: 0;
-    height: 0;
-    background-color: transparent;
-}
-
 @media (max-width: 1440px) {
     :root {
         --image-width: 500px;

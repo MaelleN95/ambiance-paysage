@@ -10,7 +10,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
     <script src="{{ asset('controllers/contact-form-ui.js') }}" defer></script>
 {% endblock %}
@@ -21,18 +20,18 @@
         <h1>Contact</h1>
 
         {{ form_start(form) }}
-            {{ form_row(form.company) }}
+            {{ form_row(form.company, { row_attr: { class: 'field' } }) }}
             <div class="duo">
-                {{ form_row(form.firstName) }}
-                {{ form_row(form.lastName) }}
+                {{ form_row(form.firstName, { row_attr: { class: 'field' } }) }}
+                {{ form_row(form.lastName, { row_attr: { class: 'field' } }) }}
             </div>
-            {{ form_row(form.address) }}
+            {{ form_row(form.address, { row_attr: { class: 'field' } }) }}
             <div class="duo">
-                {{ form_row(form.phone) }}
-                {{ form_row(form.email) }}
+                {{ form_row(form.phone, { row_attr: { class: 'field' } }) }}
+                {{ form_row(form.email, { row_attr: { class: 'field' } }) }}
             </div>
-            {{ form_row(form.service) }}
-            {{ form_row(form.message) }}
+            {{ form_row(form.service, { row_attr: { class: 'field' } }) }}
+            {{ form_row(form.message, { row_attr: { class: 'field' } }) }}
             <div class="submit-container">
                 <button type="submit">Envoyer</button>
             </div>

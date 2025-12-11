@@ -1,0 +1,144 @@
+#contact-section form div {
+    display:flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#contact-section .duo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#contact-section .duo > div {
+    flex: 1;
+}
+
+#contact-section input[type="text"],
+#contact-section input[type="email"],
+#contact-section input[type="tel"],
+#contact-section textarea,
+#contact-section select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+#contact-section input:focus,
+#contact-section textarea:focus,
+#contact-section select:focus,
+#contact-section .choices.is-focused .choices__inner {
+    border-color: var(--green);
+    box-shadow: 0 0 5px #c1e17177;
+    outline: none;
+}
+
+#contact-section textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contact-section label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+#contact-section ::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+#contact-section .submit-container {
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    margin: 20px 0 100px 0;
+}
+
+#contact-section button[type="submit"] {
+    display:block;
+    padding: 10px 30px;
+    background-color: transparent;
+    color: var(--black);
+    border: 3px solid var(--green);
+    border-radius: 4px;
+    font-family: Open Sans, sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#contact-section button[type="submit"]:hover {
+    background-color: var(--green);
+}
+
+#contact-section .choices {
+    margin:0;
+}
+
+#contact-section .choices__inner {
+    margin:0;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+#contact-section .choices__input {
+    background: white;
+}
+
+#contact-section .choices__input:focus {
+    border-color: none;
+    box-shadow:none;
+    outline: none;
+}
+
+#contact-section .choices__list--multiple .choices__item {
+    background-color: var(--black);
+    font-family: Open Sans, sans-serif;
+    font-size: 1rem;
+}
+
+#contact-section div:has(#contact_address) {
+    position: relative;
+}
+
+#contact-section ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: white;
+    list-style: none;
+    border: 1px solid #00000038;
+    z-index: 2;
+
+}
+
+#contact-section li {
+    padding: 5px 10px;
+    border-bottom: 1px solid #00000017;
+    cursor: pointer;
+}
+
+#contact-section li:hover {
+    background-color: #0000000b;
+}
+
+@media (max-width: 768px) {
+    #contact-section .duo {
+        flex-direction: column;
+    }
+}

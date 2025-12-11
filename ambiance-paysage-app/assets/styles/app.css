@@ -1,3 +1,11 @@
+:root {
+    --yellow:#FCE190;
+    --green:#C1E171;
+    --brown:#D49559;
+    --black:#232226;
+}
+
+
 body {
     font-family: Open Sans, sans-serif;
     font-size: 1.2rem;

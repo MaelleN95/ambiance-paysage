@@ -2,23 +2,149 @@
 
 {% block title %}Contact{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {# Choices.js CSS #}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <link rel="stylesheet" href="{{ asset('styles/contact.css') }}">
+<style>
+form div {
+    display:flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.duo {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.duo > div {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 5px #c1e17177;
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    margin: 20px 0;
+}
+
+button[type="submit"] {
+    display:block;
+    padding: 10px 30px;
+    background-color: transparent;
+    color: var(--black);
+    border: 3px solid var(--green);
+    border-radius: 4px;
+    font-family: Open Sans, sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--green);
+}
+
+.choices {
+    margin:0;
+}
+
+.choices__inner {
+    margin:0;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.choices__input {
+    background: white;
+}
+
+.choices__input:focus {
+    border-color: none;
+    box-shadow:none;
+    outline: none;
+}
+
+.choices__input:focus ~ .choices__inner {
+    background:red;
+}
+
+
+</style>
+{% endblock %}
+
 {% block body %}
-<h1>Contact</h1>
+<section id="contact-section">
+    <div class="max-width-container">
+        <h1>Contact</h1>
 
-{{ form_start(form) }}
-    {{ form_row(form.company) }}
-    {{ form_row(form.firstName) }}
-    {{ form_row(form.lastName) }}
-    {{ form_row(form.address) }}
-    {{ form_row(form.phone) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.service) }}
-    {{ form_row(form.message) }}
-    <button type="submit">Envoyer</button>
-{{ form_end(form) }}
-
-{# Choices.js CSS #}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+        {{ form_start(form) }}
+            {{ form_row(form.company) }}
+            <div class="duo">
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.lastName) }}
+            </div>
+            {{ form_row(form.address) }}
+            <div class="duo">
+                {{ form_row(form.phone) }}
+                {{ form_row(form.email) }}
+            </div>
+            {{ form_row(form.service) }}
+            {{ form_row(form.message) }}
+            <div class="submit-container">
+                <button type="submit">Envoyer</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</section>
 
 {# Choices.js JS #}
 <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>

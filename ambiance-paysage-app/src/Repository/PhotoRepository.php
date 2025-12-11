@@ -53,4 +53,16 @@ class PhotoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findByCategoryPaginated(string $category, int $limit, int $offset): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.category = :cat')
+            ->setParameter('cat', $category)
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
 }

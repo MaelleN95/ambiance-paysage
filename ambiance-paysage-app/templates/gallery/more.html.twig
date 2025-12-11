@@ -14,37 +14,48 @@
         <a href="{{ path('app_gallery') }}" class="back-button">Retour</a>
         <h2> Galerie photos</h2>
 
+    
         {% if category == 'before_after' %}
             <h3>Avant / Après</h3>
-
-            <div class="gallery-flex">
-                {% for beforeAfterPhotos in photos %}
-                    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': beforeAfterPhotos} %}
-                {% endfor %}
-            </div>
         {% elseif category == 'work_in_progress' %}
             <h3>En plein travail</h3>
-
-            <div class="gallery-flex">
-                {% for workInProgressPhoto in photos %}
-                    <div class="work-in-progress-photo">
-                        <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
-                    </div>
-                {% endfor %}
-            </div>
         {% elseif category == 'finished' %}
             <h3>Oeuvres finies</h3>
-
-            <div class="gallery-flex">
-                {% for finishedPhoto in photos %}
-                    <div class="finished-photo">
-                        <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p>Catégorie inconnue.</p>
         {% endif %}
+
+        <div class="gallery-flex">
+            {% for photo in photos %}
+                {% if category == 'before_after' %}
+                    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': photo} %}
+                {% elseif category == 'work_in_progress' or category == 'finished' %}
+                    <div class="photo">
+                        <img src="{{ asset('uploads/photos/' ~ photo.image) }}" alt="">
+                    </div>
+                {% else %}
+                    <p>Catégorie inconnue.</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        {# Pagination #}
+        <div class="pagination">
+
+            {% if page > 1 %}
+                <a href="{{ path('app_gallery_more', {category: category, page: page - 1}) }}">Précédent</a>
+            {% endif %}
+
+            {% for i in 1..total_pages %}
+                <a href="{{ path('app_gallery_more', {category: category, page: i}) }}"
+                   class="{{ page == i ? 'active' : '' }}">
+                    {{ i }}
+                </a>
+            {% endfor %}
+
+            {% if page < total_pages %}
+                <a href="{{ path('app_gallery_more', {category: category, page: page + 1}) }}">Suivant</a>
+            {% endif %}
+        </div>
+
         <a href="{{ path('app_gallery') }}" class="back-button">Retour</a>
     </div>
 </section>

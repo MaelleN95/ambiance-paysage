@@ -26,20 +26,27 @@ final class GalleryController extends AbstractController
     }
 
 
-    #[Route('/galerie-photo/{category}', name: 'app_gallery_more')]
-    public function more(string $category, PhotoRepository $photoRepository, BeforeAfterPhotoRepository $beforeAfterPhotoRepository): Response
+    #[Route('/galerie-photo/{category}/{page}', name: 'app_gallery_more', defaults: ['page' => 1])]
+    public function more(string $category, int $page, PhotoRepository $photoRepository, BeforeAfterPhotoRepository $beforeAfterPhotoRepository): Response
     {
+
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
+
         switch ($category) {
             case 'before_after':
-                $photos = $beforeAfterPhotoRepository->findAllOrdered();
+                $photos = $beforeAfterPhotoRepository->findPaginated($limit, $offset);
+                $total = $beforeAfterPhotoRepository->count([]);
                 break;
 
             case 'work_in_progress':
-                $photos = $photoRepository->findByCategoryOrdered('work_in_progress');
+                $photos = $photoRepository->findByCategoryPaginated('work_in_progress', $limit, $offset);
+                $total = $photoRepository->count(['category' => 'work_in_progress']);
                 break;
 
             case 'finished':
-                $photos = $photoRepository->findByCategoryOrdered('finished');
+                $photos = $photoRepository->findByCategoryPaginated('finished', $limit, $offset);
+                $total = $photoRepository->count(['category' => 'finished']);
                 break;
 
             default:
@@ -49,6 +56,8 @@ final class GalleryController extends AbstractController
         return $this->render('gallery/more.html.twig', [
             'photos' => $photos,
             'category' => $category,
+            'page' => $page,
+            'total_pages' => ceil($total / $limit),
         ]);
     }
 

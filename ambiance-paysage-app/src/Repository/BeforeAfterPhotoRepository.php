@@ -43,4 +43,14 @@ class BeforeAfterPhotoRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function findPaginated(int $limit, int $offset): array
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.id', 'DESC')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
 }

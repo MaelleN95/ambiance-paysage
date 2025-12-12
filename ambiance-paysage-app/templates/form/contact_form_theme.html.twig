@@ -1,0 +1,19 @@
+{% block form_errors %}
+    {% if errors|length > 0 %}
+        <ul class="error-list">
+            {% for error in errors %}
+                <li>{{ error.message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block form_row %}
+    {% set error_class = errors|length > 0 ? 'error' : '' %}
+
+    <div class="field {{ row_attr.class|default('') }}">
+        {{ form_label(form) }}
+        {{ form_widget(form, { attr: { class: (attr.class|default('') ~ ' ' ~ error_class)|trim } }) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock %}

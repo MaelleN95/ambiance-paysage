@@ -142,6 +142,35 @@
     background-color: #0000000b;
 }
 
+#contact-section input.error,
+#contact-section textarea.error,
+#contact-section select.error {
+    border: 1px solid #e74c3c;
+    background-color: #fdecea;
+    color: #e74c3c;
+    transition: all 0.2s;
+}
+
+#contact-section input.error:focus,
+#contact-section textarea.error:focus,
+#contact-section select.error:focus {
+    border-color: #c0392b;
+    box-shadow: 0 0 5px #e74c3c44;
+    outline: none;
+}
+
+#contact-section .error-list {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin: 0;
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+#contact-section .error-list li {
+    margin-bottom: 3px;
+}
+
 @media (max-width: 768px) {
     #contact-section .duo {
         flex-direction: column;

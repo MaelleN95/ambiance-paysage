@@ -48,6 +48,7 @@ class ContactType extends AbstractType
             ->add('address', TextType::class, [
                 'label' => 'form.contact.address',
                 'attr' => ['id' => 'address-input'],
+                'required'=> true,
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['min' => 5, 'max' => 255]),
@@ -57,7 +58,6 @@ class ContactType extends AbstractType
                 'label' => 'form.contact.phone',
                 'required'=> false,
                 'constraints' => [
-                    new Assert\NotBlank(),
                     new Assert\Regex([
                         'pattern' => '/^0[1-9](\d{2}){4}$/',
                         'message' => 'Numéro de téléphone français invalide.',
@@ -68,7 +68,6 @@ class ContactType extends AbstractType
                 'label' => 'form.contact.email',
                 'required'=> false,
                 'constraints' => [
-                    new Assert\NotBlank(),
                     new Assert\Email(),
                     new Assert\Length(['max' => 180]),
                 ],
@@ -76,17 +75,15 @@ class ContactType extends AbstractType
             ->add('service', EntityType::class, [
                 'class' => Service::class,
                 'label' => 'form.contact.service',
+                'required'=> false,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => false,
                 'attr' => ['class' => 'choices-service'],
-                'constraints' => [
-                    new Assert\NotBlank(),
-                    new Assert\Count(['min' => 1]),
-                ],
             ])
             ->add('message', TextareaType::class, [
                 'label' => 'form.contact.message',
+                'required'=> false,
                 'constraints' => [
                     new Assert\Length(['max' => 4000]),
                 ],

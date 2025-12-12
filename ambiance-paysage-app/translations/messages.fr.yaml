@@ -89,3 +89,14 @@ Thursday: Jeudi
 Friday: Vendredi
 Saturday: Samedi
 Sunday: Dimanche
+
+form:
+  contact:
+    company: Société
+    first_name: Nom
+    last_name: Prénom
+    address: Adresse
+    phone: Téléphone
+    email: Email
+    service: Service(s)
+    message: Message

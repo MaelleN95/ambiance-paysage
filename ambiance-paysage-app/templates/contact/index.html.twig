@@ -19,7 +19,7 @@
     <div class="max-width-container">
         <h1>Contact</h1>
 
-        {{ form_start(form) }}
+        {{ form_start(form, { attr: { 'data-turbo': 'false' } }) }}
             {{ form_row(form.company, { row_attr: { class: 'field' } }) }}
             <div class="duo">
                 {{ form_row(form.firstName, { row_attr: { class: 'field' } }) }}

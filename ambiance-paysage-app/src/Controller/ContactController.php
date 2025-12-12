@@ -3,39 +3,43 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 use App\Form\ContactType;
+use App\DTO\ContactData;
 
 final class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, MailerInterface $mailer): Response
     {
-        $form = $this->createForm(ContactType::class);
+        $form = $this->createForm(ContactType::class, new ContactData());
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $email = (new Email())
-                ->from('contact@koji-dev.fr')
-                ->to('maelle.nioche@gmail.com')
+            $serviceNames = [];
+            if (!empty($data->service) && is_iterable($data->service)) {
+                foreach ($data->service as $service) {
+                    $serviceNames[] = $service->getName();
+                }
+            }
+
+            $email = (new TemplatedEmail())
+                ->from(new Address('contact@koji-dev.fr', 'Ambiance Paysage'))
+                ->to('nioche.maelle@gmail.com') // TODO : mettre d'adresse Ambiance Paysage
                 ->subject('Nouveau message depuis le formulaire de contact')
-                ->text(
-                    "Société: {$data['company']}\n".
-                    "Prénom: {$data['firstName']}\n".
-                    "Nom: {$data['lastName']}\n".
-                    "Adresse: {$data['address']}\n".
-                    "Téléphone: {$data['phone']}\n".
-                    "Email: {$data['email']}\n".
-                    "Service: {$data['service']}\n".
-                    "Message:\n{$data['message']}"
-                );
+                ->htmlTemplate('emails/contact.html.twig')
+                ->context([
+                    'data' => $data,
+                    'serviceNames' => $serviceNames,
+                ]);
 
             $mailer->send($email);
 

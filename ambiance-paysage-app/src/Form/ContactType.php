@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\DTO\ContactData;
 use App\Entity\Service;
 use App\Validator\Constraints\AtLeastOneContact;
 use Symfony\Component\Form\AbstractType;
@@ -60,7 +61,7 @@ class ContactType extends AbstractType
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => '/^0[1-9](\d{2}){4}$/',
-                        'message' => 'Numéro de téléphone français invalide.',
+                        'message' => 'Numéro de téléphone invalide.',
                     ]),
                 ],
             ])
@@ -93,10 +94,10 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'data_class' => ContactData::class,
             'constraints' => [
                 new AtLeastOneContact(),
             ],
-            'data_class' => null,
         ]);
     }
 }

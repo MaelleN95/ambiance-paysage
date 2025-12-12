@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nouveau message de contact</title>
+    <style>
+        :root {
+            --yellow: #FCE8A8;
+            --green: #C6E88A;
+            --brown: #D8A16C;
+            --black: #2A292E;
+            --grey: #F7F7F7;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #fafafa;
+            color: var(--black);
+            padding: 30px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            border: 1px solid #eee;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--green), var(--yellow));
+            padding: 25px 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: var(--black);
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 35px 40px;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--brown);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .value {
+            padding: 10px 14px;
+            background-color: var(--yellow);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .services-list div {
+            padding: 8px 12px;
+            background-color: var(--yellow);
+            border-radius: 6px;
+            margin-bottom: 6px;
+        }
+
+        .message {
+            white-space: pre-line;
+            padding: 14px 16px;
+            background-color: var(--grey);
+            border-left: 4px solid var(--green);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>Nouveau message depuis le formulaire de contact</h1>
+    </div>
+
+    <div class="content">
+
+        {% if data.company is not empty %}
+            <div class="field">
+                <span class="label">Société :</span>
+                <span class="value">{{ data.company }}</span>
+            </div>
+        {% endif %}
+
+        {% if data.firstName is not empty %}
+            <div class="field">
+                <span class="label">Prénom :</span>
+                <span class="value">{{ data.firstName }}</span>
+            </div>
+        {% endif %}
+
+        {% if data.lastName is not empty %}
+            <div class="field">
+                <span class="label">Nom :</span>
+                <span class="value">{{ data.lastName }}</span>
+            </div>
+        {% endif %}
+
+        {% if data.address is not empty %}
+            <div class="field">
+                <span class="label">Adresse :</span>
+                <span class="value">{{ data.address }}</span>
+            </div>
+        {% endif %}
+
+        {% if data.phone is not empty %}
+            <div class="field">
+                <span class="label">Téléphone :</span>
+                <span class="value">{{ data.phone }}</span>
+            </div>
+        {% endif %}
+
+        {% if data.email is not empty %}
+            <div class="field">
+                <span class="label">Email :</span>
+                <span class="value">{{ data.email }}</span>
+            </div>
+        {% endif %}
+
+        {% if serviceNames is not empty %}
+            <div class="field">
+                <span class="label">
+                    {{ serviceNames|length > 1 ? 'Services :' : 'Service :' }}
+                </span>
+
+                {% if serviceNames|length > 1 %}
+                    <div class="services-list">
+                        {% for s in serviceNames %}
+                            <div>{{ s }}</div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <span class="value">{{ serviceNames[0] }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if data.message is not empty %}
+            <div class="field">
+                <span class="label">Message :</span>
+                <div class="message">{{ data.message }}</div>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+</body>
+</html>

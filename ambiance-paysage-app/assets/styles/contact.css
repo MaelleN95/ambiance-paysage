@@ -119,7 +119,7 @@
     position: relative;
 }
 
-#contact-section ul {
+#contact-section #contact_address + ul {
     position: absolute;
     top: 100%;
     left: 0;
@@ -132,13 +132,13 @@
 
 }
 
-#contact-section li {
+#contact-section #contact_address + ul li {
     padding: 5px 10px;
     border-bottom: 1px solid #00000017;
     cursor: pointer;
 }
 
-#contact-section li:hover {
+#contact-section #contact_address + ul li:hover {
     background-color: #0000000b;
 }
 

@@ -1,0 +1,28 @@
+<h1 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">
+    Confirmation de votre adresse e-mail
+</h1>
+
+<p style="margin-bottom: 12px;">
+    Bonjour,
+</p>
+
+<p style="margin-bottom: 12px;">
+    Merci de confirmer votre adresse e-mail en cliquant sur le lien ci-dessous&nbsp;:
+</p>
+
+<p style="margin: 16px 0;">
+    <a href="{{ signedUrl|raw }}"
+       style="display: inline-block; padding: 10px 16px; background-color: #C1E171; color: #000000; text-decoration: none; border-radius: 4px;">
+        Confirmer mon adresse e-mail
+    </a>
+</p>
+
+<p style="margin-bottom: 12px; font-size: 14px; color: #555;">
+    Ce lien expirera dans
+    {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p style="margin-top: 24px;">
+    Cordialement,<br>
+    Ambiance Paysage Bot
+</p>

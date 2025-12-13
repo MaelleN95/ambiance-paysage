@@ -100,3 +100,8 @@ form:
     email: Email
     service: Service(s)
     message: Message
+
+  registration:
+    username: Nom d'utilisateur
+    email: Adresse mail
+    password: Mot de passe

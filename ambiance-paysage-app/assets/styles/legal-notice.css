@@ -1,0 +1,33 @@
+#legal-notice-section .legal-notice-paragraph,
+#privacy-policy-section .legal-notice-paragraph {
+  text-align: left;
+}
+
+#legal-notice-section h3,
+#privacy-policy-section h3 {
+  position: relative;
+  text-align: left;
+  padding: 3rem 0 1.6rem 0;
+}
+
+#legal-notice-section h3::after,
+#privacy-policy-section h3::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 85px;
+  height: 4px;
+  background-color: var(--green);
+}
+
+#legal-notice-section a,
+#privacy-policy-section a {
+    color: var(--black);
+    transition: all 0.2s;
+}
+
+#legal-notice-section a:hover,
+#privacy-policy-section a:hover {
+    color: var(--brown);
+}

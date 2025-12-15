@@ -5,6 +5,29 @@
         <title>{% block title %}{% endblock %} - Ambiance Paysage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        
+        <meta name="author" content="Georges Noirot" />
+
+        {% block canonical %}
+            <link rel="canonical" href="https://ambiancepaysage-paca.com" />
+        {% endblock %}
+
+        {% block meta_keywords %}
+            <meta name="keywords" content="Ambiance Paysage, paysagiste PACA, aménagement jardin Marseille, création jardin Peypin, entretien espaces verts, Georges Noirot, paysagiste professionnel, design extérieur, plantation arbres, aménagement paysager, jardin sur-mesure, terrassement, entretien jardin, décoration extérieure, paysagiste Peypin, paysagiste Marseille" />
+        {% endblock %}
+
+        <meta property="og:site_name" content="Ambiance Paysage" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ambiance-paysage.fr" />
+        <meta property="og:title" content="Ambiance Paysage - {% block og_title %}{% endblock %}" />
+        <meta property="og:description" content="{% block og_description %}Ambiance Paysage : paysagisme et aménagement extérieur sur-mesure dans la région PACA, autour de Marseille et Peypin.{% endblock %}" />
+        <meta property="og:image" content="{{ asset('images/ambiance-paysage-prev.png') }}" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Ambiance Paysage - {% block twitter_title %}{% endblock %}" />
+        <meta name="twitter:description" content="{% block twitter_description %}Ambiance Paysage : paysagisme et aménagement extérieur sur-mesure dans la région PACA, autour de Marseille et Peypin.{% endblock %}" />
+        <meta name="twitter:image" content="{{ asset('images/ambiance-paysage-prev.png') }}" />
+
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
             <link rel="stylesheet" href="{{ asset('styles/footer.css') }}">

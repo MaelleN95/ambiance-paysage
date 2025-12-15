@@ -2,6 +2,21 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block canonical %}
+    <link rel="canonical" href="https://ambiancepaysage-paca.com" />
+{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="Ambiance Paysage à Peypin : création et entretien de jardins, aménagements paysagers sur-mesure dans la région PACA." />
+{% endblock %}
+
+{% block og_title %}Accueil{% endblock %}
+{% block og_description %}Ambiance Paysage à Peypin : création et entretien de jardins, aménagements paysagers sur-mesure dans la région PACA.{% endblock %}
+
+{% block twitter_title %}Accueil{% endblock %}
+{% block twitter_description %}Ambiance Paysage à Peypin : création et entretien de jardins, aménagements paysagers sur-mesure dans la région PACA.{% endblock %}
+
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/services.css') }}">

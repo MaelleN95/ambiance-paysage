@@ -2,6 +2,20 @@
 
 {% block title %}Galerie photos{% endblock %}
 
+{% block canonical %}
+    <link rel="canonical" href="https://ambiancepaysage-paca.com/galerie-photo" />
+{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="Découvrez les réalisations d’Ambiance Paysage : jardins, aménagements extérieurs et espaces verts dans la région PACA." />
+{% endblock %}
+
+{% block og_title %}Galerie{% endblock %}
+{% block og_description %}Découvrez les réalisations d’Ambiance Paysage : jardins, aménagements extérieurs et espaces verts dans la région PACA.{% endblock %}
+
+{% block twitter_title %}Galerie{% endblock %}
+{% block twitter_description %}Découvrez les réalisations d’Ambiance Paysage : jardins, aménagements extérieurs et espaces verts dans la région PACA.{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('styles/before-after-photo.css') }}">

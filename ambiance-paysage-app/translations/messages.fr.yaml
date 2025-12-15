@@ -6,6 +6,8 @@ about:
   plural: "À propos"
   description:
     label: "Description"
+  slogan:
+    label: "Slogan"
 
 before_after:
   singular: "Photo Avant / Après"

@@ -13,7 +13,7 @@
 
 
 {% if photosFeaturedOnHomePage %}
-    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': photosFeaturedOnHomePage} %}
+    {% include 'partials/_before-after-photo.html.twig' with {'beforeAfterPhotos': photosFeaturedOnHomePage, 'slogan': slogan} %}
 {% endif %}
 
 {% include 'home/services-section.html.twig' %}

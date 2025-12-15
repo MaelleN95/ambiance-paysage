@@ -29,7 +29,11 @@
         <div class="gallery-flex">
         {% for workInProgressPhoto in workInProgress %}
             <div class="work-in-progress-photo">
-                <img src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" alt="Photo en cours de réalisation">
+                <img 
+                    src="{{ asset('uploads/photos/' ~ workInProgressPhoto.image) }}" 
+                    alt="Photo en cours de réalisation"
+                    loading="lazy"
+                    decoding="async">
             </div>
         {% endfor %}
         </div>
@@ -42,7 +46,11 @@
         <div class="gallery-flex">
         {% for finishedPhoto in finished %}
             <div class="finished-photo">
-                <img src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" alt="Photo d'une oeuvre finie">
+                <img 
+                    src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" 
+                    alt="Photo d'une oeuvre finie"
+                    loading="lazy"
+                    decoding="async">
             </div>
         {% endfor %}
         </div>

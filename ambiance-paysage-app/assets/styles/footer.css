@@ -1,6 +1,6 @@
 footer {
-    background-color: #2e8b57;
-    color: white;
+    background: linear-gradient(135deg, var(--yellow) 0%, var(--green) 30%);
+    color: var(--black);
     padding: 20px;
 }
 
@@ -11,7 +11,7 @@ footer > div {
 }
 
 footer .footer-logo {
-    width: 150px;
+    width: 200px;
     margin-bottom: 10px;
 }
 
@@ -29,7 +29,7 @@ footer .social-media lord-icon {
 
 footer .page-links a {
     display: block;
-    color: white;
+    color: var(--black);
     text-decoration: none;
     margin-bottom: 5px;
 }

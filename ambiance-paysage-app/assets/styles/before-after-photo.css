@@ -30,14 +30,14 @@
 }
 
 .gradient-for-home-page h1 {
-    font-size: 4rem;
+    font-size: 8rem;
     margin-top: 0;
     margin-bottom: 10px;
 }
 
 .gradient-for-home-page .slogan {
     margin: 0;
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 .before-after-photo-img {
@@ -123,6 +123,14 @@
 @media (max-width: 1440px) {
     .before-after-photo {
         --image-width: 500px;
+    }
+
+    .gradient-for-home-page h1 {
+        font-size: 4rem;
+    }
+
+    .gradient-for-home-page .slogan {
+        font-size: 2rem;
     }
 }
 

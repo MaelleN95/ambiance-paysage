@@ -4,24 +4,22 @@
 }
 
 #about-section .contact-button {
-    background-color: #4CAF50;
-    font-size: 1.2rem;
-    border: none;
-    color: white;
-    padding: 10px 20px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    border: 2px solid var(--brown);
+    color: var(--brown);
+    padding: 7px 35px;
     margin: 20px 2px;
     font-size: bold;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     cursor: pointer;
-    border-radius: 8px;
-    transition-duration: 0.3s;
+    border-radius: 4px;
+    transition-duration: 0.2s;
 }
 
 #about-section .contact-button:hover {
-    background-color: white;
-    color: black;
-    outline: 2px solid #4CAF50;
+    background-color: var(--brown);
+    color: white;
 }

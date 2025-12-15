@@ -39,25 +39,24 @@
 }
 
 #gallery-section .see-more {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
+    background-color: transparent;
+    font-size: 1rem;
+    border: 2px solid var(--brown);
+    color: var(--brown);
     padding: 10px 20px;
     margin: 20px 2px;
     font-size: bold;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
     cursor: pointer;
     border-radius: 8px;
     transition-duration: 0.3s;
 }
 
 #gallery-section .see-more:hover{
-        background-color: white;
-    color: black;
-    outline: 2px solid #4CAF50;
+    background-color: var(--brown);
+    color: white;
 }
 
 .pagination {
@@ -75,7 +74,7 @@
     border-radius: 4px;
     font-size: 14px;
     color: #333;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s;
 }
 
 .pagination a:hover {

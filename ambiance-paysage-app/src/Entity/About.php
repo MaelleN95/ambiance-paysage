@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[UniqueEntity(fields: ['description'], message: 'Une description  déjà.')]
 #[ORM\Entity(repositoryClass: AboutRepository::class)]
 class About
 {
@@ -27,6 +26,16 @@ class About
     )]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le slogan ne peut pas être vide.")]
+    #[Assert\Length(
+        min: 5,
+        max: 10000,
+        minMessage: "La description doit comporter au moins {{ limit }} caractères.",
+        maxMessage: "La description ne peut pas dépasser {{ limit }} caractères."
+    )]
+    private ?string $slogan = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -40,6 +49,18 @@ class About
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSlogan(): ?string
+    {
+        return $this->slogan;
+    }
+
+    public function setSlogan(?string $slogan): static
+    {
+        $this->slogan = $slogan;
 
         return $this;
     }

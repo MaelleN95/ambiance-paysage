@@ -18,14 +18,14 @@ final class HomeController extends AbstractController
         $otherServices = $serviceRepository->findNonPrioritized();
         $photosFeaturedOnHomePage = $beforeAfterPhotoRepository->findFeaturedOnHomepageBeforeAfterPhotos();
 
-        $abouts = $aboutRepository->findAll();
-        $descriptions = array_map(fn($about) => $about->getDescription(), $abouts);
+        $about = $aboutRepository->getSiteAbout();
 
         return $this->render('home/index.html.twig', [
             'prioritizedServices' => $prioritizedServices,
             'otherServices' => $otherServices,
-            'descriptions' => $descriptions,
-            'photosFeaturedOnHomePage' => $photosFeaturedOnHomePage
+            'photosFeaturedOnHomePage' => $photosFeaturedOnHomePage,
+            'description' => $about?->getDescription(),
+            'slogan' => $about?->getSlogan(),
         ]);
-    }
+    }   
 }

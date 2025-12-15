@@ -15,4 +15,12 @@ class AboutRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, About::class);
     }
+
+    public function getSiteAbout(): ?About
+    {
+        return $this->createQueryBuilder('a')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

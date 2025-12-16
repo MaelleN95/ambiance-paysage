@@ -10,10 +10,10 @@ on:
 
 env:
   PROJECT_NAME: "ambiance-paysage-app"
-  PROJECT_DOMAIN: "https://ambiancepaysage-paca.com"
+  PROJECT_DOMAIN: "ambiancepaysage-paca.com"
   PHP_VERSION: "8.2"
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
-  DEFAULT_URI: "https://https://ambiancepaysage-paca.com"
+  DEFAULT_URI: "https://ambiancepaysage-paca.com"
 
 jobs:
   deploy:

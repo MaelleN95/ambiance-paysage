@@ -95,6 +95,7 @@ jobs:
                 echo "APP_DEBUG=0"
                 echo "DEFAULT_URI="https://${{ env.PROJECT_DOMAIN }}""
                 echo "MESSENGER_TRANSPORT_DSN=sync://"
+                echo "APP_SECRET=${{ secrets.SYMFONY_PRIVATE_KEY }}"
             } > .env
 
       - name: Upload .env to server

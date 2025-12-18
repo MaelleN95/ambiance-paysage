@@ -24,7 +24,9 @@ security:
         - { path: ^/ap-admin/signin, roles: ROLE_SUPER_ADMIN }
         - { path: ^/ap-admin, roles: ROLE_ADMIN }
 
-        
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADMIN: ROLE_USER
 
 when@test:
     security:

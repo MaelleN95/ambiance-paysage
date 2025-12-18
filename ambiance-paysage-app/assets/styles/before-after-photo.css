@@ -29,10 +29,11 @@
     padding-left: 60px;
 }
 
-.gradient-for-home-page h1 {
+.gradient-for-home-page .maxi-title {
     font-size: 8rem;
     margin-top: 0;
     margin-bottom: 10px;
+    text-align: left;
 }
 
 .gradient-for-home-page .slogan {
@@ -45,6 +46,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     max-width: var(--image-width);
     object-fit: cover;
     user-drag: none;
@@ -75,7 +77,7 @@
     top: 0;
     left: 0;
     width: var(--image-width);
-    height:auto;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -125,7 +127,7 @@
         --image-width: 500px;
     }
 
-    .gradient-for-home-page h1 {
+    .gradient-for-home-page .maxi-title {
         font-size: 4rem;
     }
 
@@ -143,7 +145,7 @@
         padding-left: 30px;
     }
 
-    .gradient-for-home-page h1 {
+    .gradient-for-home-page .maxi-title {
         font-size: 3rem;
         margin-bottom: 3px;
     }
@@ -164,7 +166,7 @@
         padding-left: 20px;
     }
 
-    .gradient-for-home-page h1 {
+    .gradient-for-home-page .maxi-title {
         font-size: 2.5rem;
         margin-bottom: 0;
     }

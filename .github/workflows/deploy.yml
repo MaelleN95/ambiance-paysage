@@ -116,6 +116,13 @@ jobs:
             cd /home/${{ secrets.HOSTINGER_USERNAME }}/domains/${{ env.PROJECT_DOMAIN }}/${{ env.PROJECT_NAME }} &&
             php bin/console asset-map:compile --env=prod
           " 
+          
+      - name: Install bundle assets
+        run: |
+          ssh -p ${{ secrets.HOSTINGER_SSH_PORT }} ${{ secrets.HOSTINGER_USERNAME }}@${{ secrets.HOSTINGER_HOST }} "
+            cd /home/${{ secrets.HOSTINGER_USERNAME }}/domains/${{ env.PROJECT_DOMAIN }}/${{ env.PROJECT_NAME }} &&
+            php bin/console assets:install public --env=prod
+          "
 
       - name: Create or update .htaccess in public directory
         run: |

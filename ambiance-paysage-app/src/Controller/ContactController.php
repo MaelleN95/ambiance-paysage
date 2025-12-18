@@ -32,7 +32,7 @@ final class ContactController extends AbstractController
             }
 
             $email = (new TemplatedEmail())
-                ->from(new Address('contact@koji-dev.fr', 'Ambiance Paysage'))
+                ->from(new Address('no-reply@ambiancepaysage-paca.com', 'Ambiance Paysage'))
                 ->to('nioche.maelle@gmail.com') // TODO : mettre d'adresse Ambiance Paysage
                 ->subject('Nouveau message depuis le formulaire de contact')
                 ->htmlTemplate('emails/contact.html.twig')

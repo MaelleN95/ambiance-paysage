@@ -39,7 +39,7 @@
         </div>
         <div class="text-content">
             <div class="social-media">
-                <h4>Retrouvez-nous sur les réseaux sociaux</h4>
+                <h3>Retrouvez-nous sur les réseaux sociaux</h3>
                 {% for socialNetwork in socialNetworks %}
                     <a href="{{ socialNetwork.link }}" target="_blank" rel="noopener" title="Lien vers {{ socialNetwork.name }}">
                         {{ socialNetwork.icon|raw }}
@@ -47,7 +47,7 @@
                 {% endfor %}
             </div>
             <div class="page-links">
-                <h4>Liens utiles</h4>
+                <h3>Liens utiles</h3>
                 <a href="{{ path('app_homepage') }}">Page d'accueil</a>
                 <a href="{{ path('app_gallery') }}">Galerie de mes réalisations</a>
                 <a href="{{ path('app_contact') }}" data-turbo="false">Me contacter</a>

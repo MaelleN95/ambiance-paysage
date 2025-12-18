@@ -40,7 +40,7 @@ class RegistrationController extends AbstractController
 
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('contact@koji-dev.fr', 'Ambiance Paysage Bot')) // TODO : changer l'email
+                    ->from(new Address('no-reply@ambiancepaysage-paca.com', 'Ambiance Paysage Bot'))
                     ->to((string) $user->getEmail())
                     ->subject('Confirmation d\'email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')

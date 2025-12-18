@@ -1,9 +1,9 @@
 <div data-controller="before-after-photo" class="{% if app.request.attributes.get('_route') == 'app_homepage' %}homepage{% endif %} before-after-photo">
     <div class="before-after-photo-overlay" data-before-after-photo-target="overlay">
-        <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.beforeImage) }}" class="before-after-photo-img before-img">
+        <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.beforeImage) }}" class="before-after-photo-img before-img" alt="image avant rénovation">
     </div>
 
-    <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.afterImage) }}" class="before-after-photo-img after-img">
+    <img src="{{ asset('uploads/before_after/' ~ beforeAfterPhotos.afterImage) }}" class="before-after-photo-img after-img" alt="image après rénovation">
     {% if app.request.attributes.get('_route') == 'app_homepage' %}
     <div class="gradient-for-home-page">
         <h1 class="maxi-title">Ambiance Paysage</h1>

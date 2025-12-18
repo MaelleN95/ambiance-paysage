@@ -30,20 +30,19 @@ class ServiceCrudController extends AbstractCrudController
     {
         yield TextField::new('name', 'service.name.label');
 
-        # @TODO : SUPER ADMIN ONLY
-        yield BooleanField::new('prioritized', 'service.prioritized.label')
-            ->setHelp('service.prioritized.help')
-            ->onlyOnForms();
+        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
+            yield BooleanField::new('prioritized', 'service.prioritized.label')
+                ->setHelp('service.prioritized.help')
+                ->onlyOnForms();
 
-        # @TODO : SUPER ADMIN ONLY
-        yield Field::new('imageFile', 'service.image.label')
-            ->setFormType(VichImageType::class)
-            ->onlyOnForms();
+            yield Field::new('imageFile', 'service.image.label')
+                ->setFormType(VichImageType::class)
+                ->onlyOnForms();
 
-        # @TODO : SUPER ADMIN ONLY
-        yield TextareaField::new('icon', 'service.icon.label')
-            ->setRequired(false)
-            ->setHelp('service.icon.help')
-            ->onlyOnForms();
+            yield TextareaField::new('icon', 'service.icon.label')
+                ->setRequired(false)
+                ->setHelp('service.icon.help')
+                ->onlyOnForms();
+        }
     }
 }

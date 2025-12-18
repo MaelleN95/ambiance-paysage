@@ -15,6 +15,10 @@ footer .footer-logo {
     margin-bottom: 10px;
 }
 
+footer h3 {
+    text-align: left;
+}
+
 footer .address-hours {
     display: flex;
     flex-direction: column;

@@ -51,6 +51,54 @@ h4 {
   overflow: hidden;
 }
 
+.flash {
+    position: relative;
+    max-width: 1440px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    border-radius: 0.375rem;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    opacity: 0.95;
+}
+
+.flash-success {
+    background-color: #76ab92;
+}
+
+.flash-danger {
+    background-color: #c48f94;
+}
+
+.flash-warning {
+    background-color: #c6b992;
+    color: #212529;
+}
+
+.flash-info {
+    background-color: #88bfca;
+    color: #212529;
+}
+
+.flash-close {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    color: inherit;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.flash-close:hover {
+    opacity: 0.7;
+}
+
+
 @media (max-width: 1440px) {
 
     .max-width-container {

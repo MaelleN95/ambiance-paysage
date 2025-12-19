@@ -1,5 +1,7 @@
 dashboard:
-  title: "Tableau de bord"
+  administration: "Administration"
+  nav: "Navigation"
+  home: "Retour page d'accueil"
 
 about:
   singular: "À propos"

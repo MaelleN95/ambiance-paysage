@@ -3,7 +3,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(135deg, var(--yellow) 0%, var(--green) 30%);
+    background: linear-gradient(135deg, var(--green) 60%, var(--yellow));
     color: var(--black);
     padding: 5px 30px;
     transition: transform 0.2s ease-in-out;

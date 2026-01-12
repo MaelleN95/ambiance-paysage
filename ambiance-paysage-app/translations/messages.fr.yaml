@@ -77,12 +77,18 @@ social_network:
   singular: "Réseau social"
   plural: "Réseaux sociaux"
   name:
-    label: "Nom du réseau social"
+    label: "Nom"
+  title:
+    label: "Titre du réseau social"
+    help: "Texte affiché sur le site web à côté de l'icône du réseau social."
+  is_visible:
+    label: "Visible"
+    help: "Définir si ce réseau social est visible sur le site."
   icon:
     label: "Icône du réseau social"
     help: "Code HTML de l'icône (par exemple, une icône lord-icon)."
   link:
-    label: "Lien du réseau social"
+    label: "Lien"
 
 
 

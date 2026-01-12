@@ -38,12 +38,15 @@
 
         </div>
         <div class="text-content">
-            <div class="social-media">
-                <h3>Retrouvez-nous sur les réseaux sociaux</h3>
+            <div class="social-networks">
+                <h3>Retrouvez-moi sur les réseaux sociaux</h3>
                 {% for socialNetwork in socialNetworks %}
+                <div class="one-social-network">
                     <a href="{{ socialNetwork.link }}" target="_blank" rel="noopener" title="Lien vers {{ socialNetwork.name }}">
                         {{ socialNetwork.icon|raw }}
                     </a>
+                    <span class="social-network-title">{{ socialNetwork.title }}</span>
+                </div>
                 {% endfor %}
             </div>
             <div class="page-links">

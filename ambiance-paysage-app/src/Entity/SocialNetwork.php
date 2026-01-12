@@ -19,6 +19,10 @@ class SocialNetwork
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     private ?string $name = null;
 
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le titre est obligatoire.")]
+    private ?string $title = null;
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     #[Assert\Length(
         max: 1000,
@@ -28,8 +32,10 @@ class SocialNetwork
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Le lien est obligatoire.")]
-    #[Assert\Url(message: "Veuillez saisir une URL valide.")]
     private ?string $link = null;
+
+    #[ORM\Column]
+    private ?bool $isVisible = null;
 
     public function getId(): ?int
     {
@@ -44,6 +50,18 @@ class SocialNetwork
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): static
+    {
+        $this->title = $title;
 
         return $this;
     }
@@ -68,6 +86,18 @@ class SocialNetwork
     public function setLink(string $link): static
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function isVisible(): ?bool
+    {
+        return $this->isVisible;
+    }
+
+    public function setIsVisible(bool $isVisible): static
+    {
+        $this->isVisible = $isVisible;
 
         return $this;
     }

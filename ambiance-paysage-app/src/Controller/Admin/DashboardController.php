@@ -42,13 +42,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('photo.plural', 'fa fa-image', Photo::class);
         yield MenuItem::linkToCrud('service.plural', 'fa fa-tools', Service::class);
         yield MenuItem::linkToCrud('schedule.plural', 'fa fa-clock', Schedule::class);
-        if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            yield MenuItem::linkToCrud(
-                'social_network.plural',
-                'fa fa-share-alt',
-                SocialNetwork::class
-            );
-        }
+        yield MenuItem::linkToCrud('social_network.plural','fa fa-share-alt',SocialNetwork::class);
         yield MenuItem::linkToCrud('about.singular', 'fa fa-info-circle', About::class);
 
         yield MenuItem::section('dashboard.nav');

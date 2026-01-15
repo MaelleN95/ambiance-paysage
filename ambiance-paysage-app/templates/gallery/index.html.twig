@@ -27,6 +27,23 @@
     <div class="max-width-container">
         <h2> Galerie photos</h2>
 
+        <h3>Oeuvres finies</h3>
+
+        <div class="gallery-flex">
+        {% for finishedPhoto in finished %}
+            <div class="finished-photo">
+                <img 
+                    src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" 
+                    alt="Photo d'une oeuvre finie"
+                    loading="lazy"
+                    decoding="async">
+            </div>
+        {% endfor %}
+        </div>
+        <div class="see-more-container">
+            <a href="{{ path('app_gallery_more', {'category': 'finished'}) }}" class="see-more">Voir plus</a>
+        </div>
+
         <h3>Avant / Après</h3>
 
         <div class="gallery-flex">
@@ -53,23 +70,6 @@
         </div>
         <div class="see-more-container">
             <a href="{{ path('app_gallery_more', {'category': 'work_in_progress'}) }}" class="see-more">Voir plus</a>
-        </div>
-
-        <h3>Oeuvres finies</h3>
-
-        <div class="gallery-flex">
-        {% for finishedPhoto in finished %}
-            <div class="finished-photo">
-                <img 
-                    src="{{ asset('uploads/photos/' ~ finishedPhoto.image) }}" 
-                    alt="Photo d'une oeuvre finie"
-                    loading="lazy"
-                    decoding="async">
-            </div>
-        {% endfor %}
-        </div>
-        <div class="see-more-container">
-            <a href="{{ path('app_gallery_more', {'category': 'finished'}) }}" class="see-more">Voir plus</a>
         </div>
     </div>
 </section>

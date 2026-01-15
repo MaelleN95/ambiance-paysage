@@ -36,6 +36,9 @@ class Photo
     )]
     private ?string $category = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $featuredOnHomepage = null;
+
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -80,5 +83,17 @@ class Photo
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function isFeaturedOnHomepage(): ?bool
+    {
+        return $this->featuredOnHomepage;
+    }
+
+    public function setFeaturedOnHomepage(?bool $featuredOnHomepage): static
+    {
+        $this->featuredOnHomepage = $featuredOnHomepage;
+
+        return $this;
     }
 }

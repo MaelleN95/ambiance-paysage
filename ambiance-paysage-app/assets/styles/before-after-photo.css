@@ -7,40 +7,6 @@
     user-select: none;
 }
 
-.homepage.before-after-photo {
-    --image-width: 100%;
-}
-
-.gradient-for-home-page {
-    position: absolute;
-    top: 0;
-    right:0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 3;
-}
-
-.gradient-for-home-page > * {
-    padding-left: 60px;
-}
-
-.gradient-for-home-page .maxi-title {
-    font-size: 8rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-    text-align: left;
-}
-
-.gradient-for-home-page .slogan {
-    margin: 0;
-    font-size: 4rem;
-}
-
 .before-after-photo-img {
     position: absolute;
     top: 0;

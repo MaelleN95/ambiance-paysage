@@ -33,17 +33,6 @@ class BeforeAfterPhotoRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function findFeaturedOnHomepageBeforeAfterPhotos(): ?BeforeAfterPhoto
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.featuredOnHomepage = :featured')
-            ->setParameter('featured', true)
-            ->orderBy('b.updatedAt', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult();
-    }
-
     public function findPaginated(int $limit, int $offset): array
     {
         return $this->createQueryBuilder('b')

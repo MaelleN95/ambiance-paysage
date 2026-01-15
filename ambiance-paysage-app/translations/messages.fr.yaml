@@ -19,9 +19,6 @@ before_after:
     label: "Image Avant"
   after_image:
     label: "Image Après"
-  featured_on_homepage:
-    label: "Mis en avant sur la page d'accueil"
-    help: "Afficher cette photo Avant / Après sur la page d'accueil du site."
 
 photo:
   singular: "Photo"
@@ -32,6 +29,9 @@ photo:
     label: "Catégorie"
     work_in_progress: "En plein travail"
     finished: "Oeuvre finie"
+  featured_on_homepage:
+    label: "Mis en avant sur la page d'accueil"
+    help: "Afficher cette photo sur la page d'accueil du site."
 
 schedule:
   singular: "Horaire"

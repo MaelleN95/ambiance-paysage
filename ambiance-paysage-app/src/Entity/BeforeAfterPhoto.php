@@ -40,9 +40,6 @@ class BeforeAfterPhoto
     )]
     private ?File $afterImageFile = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?bool $featuredOnHomepage = null;
-
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -71,18 +68,6 @@ class BeforeAfterPhoto
     public function setAfterImage(?string $afterImage): static
     {
         $this->afterImage = $afterImage;
-
-        return $this;
-    }
-
-    public function isFeaturedOnHomepage(): ?bool
-    {
-        return $this->featuredOnHomepage;
-    }
-
-    public function setFeaturedOnHomepage(?bool $featuredOnHomepage): static
-    {
-        $this->featuredOnHomepage = $featuredOnHomepage;
 
         return $this;
     }

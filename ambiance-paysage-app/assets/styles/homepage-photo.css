@@ -1,0 +1,84 @@
+.homepage.single-photo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    object-fit: cover;
+}
+
+.gradient-for-home-page {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+}
+
+.gradient-for-home-page > * {
+    padding-left: 60px;
+}
+
+.gradient-for-home-page .maxi-title {
+    font-size: 8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.gradient-for-home-page .slogan {
+    margin: 0;
+    font-size: 4rem;
+}
+
+@media (max-width: 1440px) {
+    .gradient-for-home-page .maxi-title {
+        font-size: 4rem;
+    }
+
+    .gradient-for-home-page .slogan {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .gradient-for-home-page > * {
+        padding-left: 30px;
+    }
+
+    .gradient-for-home-page .maxi-title {
+        font-size: 3rem;
+        margin-bottom: 3px;
+    }
+
+    .gradient-for-home-page .slogan {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gradient-for-home-page > * {
+        padding-left: 20px;
+    }
+
+    .gradient-for-home-page .maxi-title {
+        font-size: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .gradient-for-home-page .slogan {
+        margin: 0;
+        font-size: 1rem;
+    }
+}

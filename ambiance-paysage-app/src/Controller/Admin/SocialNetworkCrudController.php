@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\SocialNetwork;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -47,7 +48,9 @@ class SocialNetworkCrudController extends AbstractCrudController
             ->setHelp('social_network.title.help');
 
         yield BooleanField::new('isVisible', 'social_network.is_visible.label')
-            ->setHelp('social_network.is_visible.help');
+            ->setHelp('social_network.is_visible.help')
+            ->renderAsSwitch(true)
+            ->addCssClass('social-network-is-visible');
 
         if (
                 $pageName === Crud::PAGE_EDIT
@@ -59,6 +62,13 @@ class SocialNetworkCrudController extends AbstractCrudController
                     ->setHelp('social_network.icon.help');
             }
 
-        yield UrlField::new('link', 'social_network.link.label');
+        yield UrlField::new('link', 'social_network.link.label')
+            ->addCssClass('link-field');
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        $assets->addJsFile('controllers/social-network_switch.js', Crud::PAGE_INDEX);
+        return $assets;
     }
 }

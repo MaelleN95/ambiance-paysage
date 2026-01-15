@@ -7,6 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[Assert\Expression(
+    "this.isVisible() === false or this.getLink() !== null",
+    message: "Un réseau social ne peut pas être visible sans lien."
+)]
 #[ORM\Entity(repositoryClass: SocialNetworkRepository::class)]
 class SocialNetwork
 {
@@ -30,8 +34,7 @@ class SocialNetwork
     )]
     private ?string $icon = null;
 
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "Le lien est obligatoire.")]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;
 
     #[ORM\Column]
@@ -83,7 +86,7 @@ class SocialNetwork
         return $this->link;
     }
 
-    public function setLink(string $link): static
+    public function setLink(?string $link): static
     {
         $this->link = $link;
 

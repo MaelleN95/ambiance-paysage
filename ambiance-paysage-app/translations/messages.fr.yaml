@@ -66,7 +66,7 @@ service:
     label: "Nom du service"
   prioritized:
     label: "Prioritaire"
-    help: "Les services prioritaires seront affichés en premier sur le site."
+    help: "Les services prioritaires seront affichés en premier sur le site, avec une image."
   image:
     label: "Image du service"
   icon:

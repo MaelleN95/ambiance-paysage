@@ -29,15 +29,15 @@ class ServiceCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield TextField::new('name', 'service.name.label');
+        
+        yield BooleanField::new('prioritized', 'service.prioritized.label')
+            ->setHelp('service.prioritized.help');
+
+        yield Field::new('imageFile', 'service.image.label')
+            ->setFormType(VichImageType::class)
+            ->onlyOnForms();
 
         if ($this->isGranted('ROLE_SUPER_ADMIN')) {
-            yield BooleanField::new('prioritized', 'service.prioritized.label')
-                ->setHelp('service.prioritized.help')
-                ->onlyOnForms();
-
-            yield Field::new('imageFile', 'service.image.label')
-                ->setFormType(VichImageType::class)
-                ->onlyOnForms();
 
             yield TextareaField::new('icon', 'service.icon.label')
                 ->setRequired(false)
